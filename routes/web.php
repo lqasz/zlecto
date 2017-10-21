@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('ogloszenia', 'OgloszeniaController@index');
+Route::get('uzytkownicy', 'UzytkownikController@index');
+Route::get('opinie', 'OpinieController@index');
