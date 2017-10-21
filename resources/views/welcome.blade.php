@@ -19,6 +19,8 @@
                     </div>
                     <ul className="nav navbar-nav">
                         <li><a href="/ogloszenia">Ogloszenia</a></li>
+                        <li><a href="/uzytkownicy">Użytkownicy</a></li>
+                        <li><a href="/opinie">Opinie</a></li>
                     </ul>
                 </div>
             </nav>

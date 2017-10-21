@@ -26,7 +26,7 @@
             </nav>
         </div>
         <div id="example">
-            <span>Kolumny w tabeli ogloszenia:</span>
+            <span>Kolumny w tabeli opinie:</span>
             <ol>
                 @foreach($kolumny as $kolumna)
                     <li>{{$kolumna}}</li>

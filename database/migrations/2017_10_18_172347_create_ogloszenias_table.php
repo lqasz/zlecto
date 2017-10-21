@@ -27,12 +27,10 @@ class CreateOgloszeniasTable extends Migration
             $table->string('nazwa', 50);
             $table->text('opis');
             $table->uuid('autor');
-            $table->uuid('katagoria');
+            $table->uuid('id_katagorii');
+            $table->uuid('awatar');
             $table->float('cena_wyjsciowa', 8, 2)->default(0)->unsigned();
-            $table->uuid('wojewodztwo');
-            $table->uuid('miasto');
-            $table->string('ulica');
-            $table->string('kod_pocztowy');
+            $table->uuid('id_lokalizacji');
             $table->string('nr_telefonu');
             $table->string('email');
             $table->integer('licznik')->default(0);
