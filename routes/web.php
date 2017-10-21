@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('ogloszenie', 'OgloszenieController');
+Route::get('ogloszenia', 'OgloszeniaController@index');

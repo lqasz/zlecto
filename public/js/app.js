@@ -59145,8 +59145,8 @@ var Master = function (_Component) {
               { className: 'navbar-header' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'a',
-                { className: 'navbar-brand', href: '#' },
-                'AppDividend'
+                { className: 'navbar-brand', href: '/' },
+                'G\u0142\xF3wna'
               )
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -59154,20 +59154,16 @@ var Master = function (_Component) {
               { className: 'nav navbar-nav' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'li',
-                { className: 'active' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'a',
-                  { href: '#' },
-                  'Home'
-                )
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a', { href: '/' })
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'li',
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   'a',
-                  { href: '#' },
-                  'Page 1'
+                  { href: '/ogloszenia' },
+                  'Ogloszenia'
                 )
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

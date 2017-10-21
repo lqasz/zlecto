@@ -23,7 +23,14 @@
                 </div>
             </nav>
         </div>
-        <div id="example"></div>
+        <div id="example">
+            <span>Kolumny w tabeli ogloszenia:</span>
+            <ol>
+                @foreach($kolumny as $kolumna)
+                    <li>{{$kolumna}}</li>
+                @endforeach
+            </ol>
+        </div>
         <!-- <script src="{{asset('js/app.js')}}" ></script> -->
     </body>
 </html>

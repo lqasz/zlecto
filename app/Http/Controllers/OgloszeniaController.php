@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \DB;
 
 class OgloszeniaController extends Controller
 {
@@ -13,7 +14,8 @@ class OgloszeniaController extends Controller
      */
     public function index()
     {
-        //
+        $z_bazy = DB::connection()->getSchemaBuilder()->getColumnListing('ogloszenia');
+        return view('widoki_z_bazy.ogloszenia', ['kolumny' => $z_bazy]);
     }
 
     /**
