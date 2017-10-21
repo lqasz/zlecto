@@ -29,6 +29,7 @@ class CreateUzytkowniksTable extends Migration
             $table->string('nazwisko');
             $table->string('haslo');
             $table->string('login', 15);
+            $table->integer('ilosc_zetonow')->default(0);
             $table->enum('status_uzytkownika', ['aktywny', 'uspiony', 'nieaktywny']);
             $table->dateTime('ostatnie_logowanie');
             $table->integer('ilosc_opinii')->default(0);
