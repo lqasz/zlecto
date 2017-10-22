@@ -19,7 +19,7 @@ class CreateUzytkowniksTable extends Migration
             $table->dateTime('data_dodania');
             $table->dateTime('data_modyfikacji');
             $table->boolean('czy_usunieto')->default(false);
-            $table->boolean('czy_polecony')->default(false);
+            $table->uuid('id_polecenia_uzytkownik');
             $table->boolean('czy_administrator')->default(false);
             $table->uuid('id_lokalizacji');
             $table->uuid('id_kategorii');
