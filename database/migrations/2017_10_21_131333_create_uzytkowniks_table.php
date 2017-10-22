@@ -23,6 +23,7 @@ class CreateUzytkowniksTable extends Migration
             $table->boolean('czy_administrator')->default(false);
             $table->uuid('id_lokalizacji');
             $table->uuid('id_kategorii');
+            $table->uuid('id_portfela');
             $table->string('nr_telefonu');
             $table->string('email');
             $table->string('imie');
