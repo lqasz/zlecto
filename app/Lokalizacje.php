@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Uzytkownik extends Model
+class Lokalizacje extends Model
 {
     //
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Portfele;
 use Illuminate\Http\Request;
-use \DB;
 
-class OgloszeniaController extends Controller
+class PortfeleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class OgloszeniaController extends Controller
      */
     public function index()
     {
-        $z_bazy = DB::connection()->getSchemaBuilder()->getColumnListing('ogloszenia');
-        return view('widoki_z_bazy.ogloszenia', ['kolumny' => $z_bazy]);
+        //
     }
 
     /**
@@ -42,10 +41,10 @@ class OgloszeniaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Portfele  $portfele
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Portfele $portfele)
     {
         //
     }
@@ -53,10 +52,10 @@ class OgloszeniaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Portfele  $portfele
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Portfele $portfele)
     {
         //
     }
@@ -65,10 +64,10 @@ class OgloszeniaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Portfele  $portfele
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Portfele $portfele)
     {
         //
     }
@@ -76,10 +75,10 @@ class OgloszeniaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Portfele  $portfele
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Portfele $portfele)
     {
         //
     }

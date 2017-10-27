@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ogloszenia extends Model
+class Portfele extends Model
 {
     //
 }

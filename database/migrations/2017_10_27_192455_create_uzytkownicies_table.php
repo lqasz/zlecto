@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUzytkowniksTable extends Migration
+class CreateUzytkowniciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,27 +16,26 @@ class CreateUzytkowniksTable extends Migration
         Schema::create('uzytkownicy', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
+            $table->uuid('id_lokalizacji');
+            $table->uuid('id_portfela');
+            $table->uuid('awatar');
             $table->dateTime('data_dodania');
             $table->dateTime('data_modyfikacji');
+            $table->dateTime('data_zmiany_hasla');
             $table->boolean('czy_usunieto')->default(false);
-            $table->uuid('id_polecenia_uzytkownik');
-            $table->boolean('czy_administrator')->default(false);
-            $table->uuid('id_lokalizacji');
-            $table->uuid('id_kategorii');
-            $table->uuid('id_portfela');
-            $table->string('nr_telefonu');
-            $table->string('email');
+            $table->string('login', 15);
+            $table->string('haslo');
             $table->string('imie');
             $table->string('nazwisko');
-            $table->string('haslo');
-            $table->string('login', 15);
-            $table->integer('ilosc_zetonow')->default(0);
+            $table->string('email');
+            $table->string('nr_telefonu');
             $table->enum('status_uzytkownika', ['aktywny', 'uspiony', 'nieaktywny']);
             $table->dateTime('ostatnie_logowanie');
             $table->integer('ilosc_opinii')->default(0);
             $table->integer('ilosc_dodanych_ogloszen')->default(0);
             $table->integer('ilosc_zamknietych_ogloszen')->default(0);
             $table->integer('ilosc_aktywnych_ogloszen')->default(0);
+            $table->boolean('czy_administrator')->default(false);
         });
     }
 

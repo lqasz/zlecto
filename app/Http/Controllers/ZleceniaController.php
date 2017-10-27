@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Kategorie;
+use App\Zlecenia;
 use Illuminate\Http\Request;
 
-class KategorieController extends Controller
+class ZleceniaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class KategorieController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Kategorie  $kategorie
+     * @param  \App\Zlecenia  $zlecenia
      * @return \Illuminate\Http\Response
      */
-    public function show(Kategorie $kategorie)
+    public function show(Zlecenia $zlecenia)
     {
         //
     }
@@ -52,10 +52,10 @@ class KategorieController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Kategorie  $kategorie
+     * @param  \App\Zlecenia  $zlecenia
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kategorie $kategorie)
+    public function edit(Zlecenia $zlecenia)
     {
         //
     }
@@ -64,10 +64,10 @@ class KategorieController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Kategorie  $kategorie
+     * @param  \App\Zlecenia  $zlecenia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kategorie $kategorie)
+    public function update(Request $request, Zlecenia $zlecenia)
     {
         //
     }
@@ -75,10 +75,10 @@ class KategorieController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Kategorie  $kategorie
+     * @param  \App\Zlecenia  $zlecenia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kategorie $kategorie)
+    public function destroy(Zlecenia $zlecenia)
     {
         //
     }

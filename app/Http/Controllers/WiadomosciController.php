@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Opinie;
+use App\Wiadomosci;
 use Illuminate\Http\Request;
-use \DB;
 
-class OpinieController extends Controller
+class WiadomosciController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class OpinieController extends Controller
      */
     public function index()
     {
-        $z_bazy = DB::connection()->getSchemaBuilder()->getColumnListing('opinie');
-        return view('widoki_z_bazy.opinie', ['kolumny' => $z_bazy]);
+        //
     }
 
     /**
@@ -43,10 +41,10 @@ class OpinieController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Opinie  $opinie
+     * @param  \App\Wiadomosci  $wiadomosci
      * @return \Illuminate\Http\Response
      */
-    public function show(Opinie $opinie)
+    public function show(Wiadomosci $wiadomosci)
     {
         //
     }
@@ -54,10 +52,10 @@ class OpinieController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Opinie  $opinie
+     * @param  \App\Wiadomosci  $wiadomosci
      * @return \Illuminate\Http\Response
      */
-    public function edit(Opinie $opinie)
+    public function edit(Wiadomosci $wiadomosci)
     {
         //
     }
@@ -66,10 +64,10 @@ class OpinieController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Opinie  $opinie
+     * @param  \App\Wiadomosci  $wiadomosci
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Opinie $opinie)
+    public function update(Request $request, Wiadomosci $wiadomosci)
     {
         //
     }
@@ -77,10 +75,10 @@ class OpinieController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Opinie  $opinie
+     * @param  \App\Wiadomosci  $wiadomosci
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Opinie $opinie)
+    public function destroy(Wiadomosci $wiadomosci)
     {
         //
     }
