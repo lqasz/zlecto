@@ -13,7 +13,7 @@
     <body>
         <div id="example"></div>
         <div>
-            <form method="POST" action="/lokalizacje">
+            <form method="POST" action="/zlecenia">
                 {{csrf_field()}}
                 <input type="submit" name="s">
                 

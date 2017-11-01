@@ -15,5 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('lokalizacje', 'LocationController');
-Route::resource('zlecenia', 'OrderController');
+Route::get('zlecenia', 'OrderController@index');
+Route::get('zlecenia/stworz', 'OrderController@create');
+Route::get('zlecenia/{id}', 'OrderController@show');
+Route::get('zlecenia/{id}/edytuj', 'OrderController@edit');
+Route::post('zlecenia', 'OrderController@store');
+Route::put('zlecenia/{id}', 'OrderController@update');
+Route::delete('zlecenia/{id}', 'OrderController@destroy');

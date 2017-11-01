@@ -37,7 +37,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -48,7 +48,9 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $zlecenia = new Order();
+
+    	return $zlecenia->where('id', $id)->where('czy_zarchiwizowno', 0)->where('czy_usunieto', 0)->get();
     }
 
     /**
@@ -59,7 +61,9 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $zlecenia = new Order();
+
+    	return $zlecenia->where('id', $id)->where('czy_zarchiwizowno', 0)->where('czy_usunieto', 0)->get();
     }
 
     /**
