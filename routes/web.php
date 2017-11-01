@@ -15,6 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('ogloszenia', 'OgloszeniaController@index');
-Route::get('uzytkownicy', 'UzytkownikController@index');
-Route::get('opinie', 'OpinieController@index');
+Route::resource('lokalizacje', 'LocationController');
+Route::resource('zlecenia', 'OrderController');

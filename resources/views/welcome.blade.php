@@ -11,21 +11,14 @@
         <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div className="container">
-            <nav className="navbar navbar-default">
-                <div className="container-fluid">
-                    <div className="navbar-header">
-                        <a className="navbar-brand" href="/">Główna</a>
-                    </div>
-                    <ul className="nav navbar-nav">
-                        <li><a href="/ogloszenia">Ogloszenia</a></li>
-                        <li><a href="/uzytkownicy">Użytkownicy</a></li>
-                        <li><a href="/opinie">Opinie</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
         <div id="example"></div>
+        <div>
+            <form method="POST" action="/lokalizacje">
+                {{csrf_field()}}
+                <input type="submit" name="s">
+                
+            </form>
+        </div>
         <!-- <script src="{{asset('js/app.js')}}" ></script> -->
     </body>
 </html>
