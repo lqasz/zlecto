@@ -22,3 +22,6 @@ Route::get('zlecenia/{id}/edytuj', 'OrderController@edit');
 Route::post('zlecenia', 'OrderController@store');
 Route::put('zlecenia/{id}', 'OrderController@update');
 Route::delete('zlecenia/{id}', 'OrderController@destroy');
+
+
+Route::post('rejestracja', 'UserController@store');
