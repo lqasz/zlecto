@@ -14,6 +14,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
+
      	return response('1', 200);
     }
 }
