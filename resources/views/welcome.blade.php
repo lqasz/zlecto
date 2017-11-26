@@ -17,7 +17,7 @@
     </head>
     <body>
         <div id="app">
-            <home></home>
+            <registration></registration>
         </div>
         <script type="text/javascript" src="/js/app.js"></script>
     </body>

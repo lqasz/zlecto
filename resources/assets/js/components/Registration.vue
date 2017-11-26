@@ -13,23 +13,46 @@
             </div>
             <div class="row">
                 <div class="col-md-3 field-label-responsive">
-                    <label for="name">Imię i nazwisko</label>
+                    <label for="name">Imię</label>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                            <input name="imie_nazwisko" class="form-control" id="name" placeholder="Jan Kowalski" value="Jan Kowalski" required="" autofocus="" type="text">
+                            <input name="imie" class="form-control" id="name" placeholder="Jan" required="" autofocus="" type="text" v-on:keyup="edit">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle hide empty">
-                            <i class="fa fa-close"> Podaj imię i nazwisko</i>
+                            <i class="fa fa-close"> Podaj imię</i>
                         </span>
-                        <span class="text-danger align-middle hide not_valid_format">
-                            <i class="fa fa-close"> Błędne imię lub nazwisko</i>
+                        <span class="text-danger align-middle not_valid_format">
+                            <i v-if="errName" class="fa fa-close">{{ errName }}</i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 field-label-responsive">
+                    <label for="name">Nazwisko</label>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                            <input name="nazwisko" class="form-control" id="surname" placeholder="Kowalski" required="" autofocus="" type="text" v-on:keyup="edit">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-control-feedback">
+                        <span class="text-danger align-middle hide empty">
+                            <i class="fa fa-close"> Podaj nazwisko</i>
+                        </span>
+                        <span class="text-danger align-middle not_valid_format">
+                            <i v-if="errSurname" class="fa fa-close">{{ errSurname }}</i>
                         </span>
                     </div>
                 </div>
@@ -42,7 +65,7 @@
                     <div class="form-group">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                            <input name="email" class="form-control" id="email" placeholder="jan.kowalski@przyklad.pl" value="jan.kowalski@przyklad.pl" required="" autofocus="" type="text">
+                            <input name="email" class="form-control" id="email" placeholder="jan.kowalski@przyklad.pl" required="" autofocus="" type="text">
                         </div>
                     </div>
                 </div>
@@ -51,8 +74,8 @@
                         <span class="text-danger align-middle hide empty">
                             <i class="fa fa-close"> Podaj adres email</i>
                         </span>
-                        <span class="text-danger align-middle hide not_valid_format">
-                            <i class="fa fa-close"> Błędny adres email</i>
+                        <span class="text-danger align-middle not_valid_format">
+                            <i v-if="errEmail"class="fa fa-close">{{ errEmail }}</i>
                         </span>
                     </div>
                 </div>
@@ -67,7 +90,7 @@
                             <div class="input-group-addon" style="width: 2.6rem">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
                             </div>
-                            <input name="nr_telefonu" class="form-control" id="phone-number" placeholder="+48 123 456 789" value="+48 123 456 789" required="" type="text">
+                            <input name="nr_telefonu" class="form-control" id="phone-number" placeholder="+48 123 456 789" required="" type="text">
                         </div>
                     </div>
                 </div>
@@ -90,7 +113,7 @@
                     <div class="form-group has-danger">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                            <input name="haslo" class="form-control" id="example-progress-bar" placeholder="min. 10 znaków" required="" type="password" value="qwertyuiop">
+                            <input name="haslo" class="form-control" id="example-progress-bar" placeholder="min. 8 znaków" required="" type="password">
                         </div>
                     </div>
                 </div>
@@ -117,7 +140,7 @@
                             <div class="input-group-addon" style="width: 2.6rem">
                                 <i class="fa fa-repeat"></i>
                             </div>
-                            <input name="ponownie_haslo" class="form-control" id="password-confirm" placeholder="powtórz hasło" value="qwertyuiop" required="" type="password">
+                            <input name="ponownie_haslo" class="form-control" id="password-confirm" placeholder="powtórz hasło" required="" type="password">
                         </div>
                     </div>
                 </div>

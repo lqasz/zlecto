@@ -996,10 +996,13 @@ __webpack_require__(12);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('home', __webpack_require__(39));
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('registration', __webpack_require__(53));
 
 var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
-  el: '#app'
+  el: '#app',
+  data: {
+    message: 'Hello'
+  }
 });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
@@ -45613,54 +45616,7 @@ exports.clearImmediate = clearImmediate;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(4)))
 
 /***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(40)
-/* script */
-var __vue_script__ = __webpack_require__(41)
-/* template */
-var __vue_template__ = __webpack_require__(42)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\Home.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-85ef4954", Component.options)
-  } else {
-    hotAPI.reload("data-v-85ef4954", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 39 */,
 /* 40 */
 /***/ (function(module, exports) {
 
@@ -45770,158 +45726,76 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 41 */
+/* 41 */,
+/* 42 */,
+/* 43 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = __webpack_require__(54)
+/* template */
+var __vue_template__ = __webpack_require__(55)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Registration.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-56a40330", Component.options)
+  } else {
+    hotAPI.reload("data-v-56a40330", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         var token = document.head.querySelector('meta[name="csrf-token"]');
@@ -46004,18 +45878,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var valid = true;
 
             if (name == "imie_nazwisko") {
-                valid = value.length > 6;
+                valid = value.length > 6 && value.indexOf(' ') >= 3;
             } else if (name == "email") {
                 var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
                 valid = regex.test(value);
             } else if (name == "nr_telefonu") {
                 var value = value.trim(),
-                    regex = /^\+?([0-9]{2})\)?[- ]?([0-9]{3})[- ]?([0-9]{3})[- ]?([0-9]{3})$/;
+                    regex = /^\+?([0-9]{3})[- ]?([0-9]{3})[- ]?([0-9]{3})$/;
 
                 valid = regex.test(value);
             } else if (name == "haslo") {
-                valid = value.length > 9;
+                valid = value.length > 7;
+
+                regex = /^[a-z]*$/;
+
+                regex = /^[A-Z]*$/;
+
+                regex = /^[0-9]*$/;
+
+                regex = /^[!@#$%^&\*]*$/;
+
+                regex = /^[^-_()<>\[\{\]\}\?\/\|\\\,\.\=\+\:\;]*$/;
+
+                valid = regex.test(value);
             }
 
             return valid;
@@ -46024,7 +45910,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 42 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -46051,6 +45937,8 @@ var render = function() {
       _vm._m(4, false, false),
       _vm._v(" "),
       _vm._m(5, false, false),
+      _vm._v(" "),
+      _vm._m(6, false, false),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-3" }),
@@ -46112,9 +46000,68 @@ var staticRenderFns = [
             _c("input", {
               staticClass: "form-control",
               attrs: {
-                name: "imie_nazwisko",
+                name: "imie",
                 id: "name",
                 placeholder: "Jan Kowalski",
+                value: "Jan",
+                required: "",
+                autofocus: "",
+                type: "text"
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "form-control-feedback" }, [
+          _c("span", { staticClass: "text-danger align-middle hide empty" }, [
+            _c("i", { staticClass: "fa fa-close" }, [
+              _vm._v(" Podaj imię i nazwisko")
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "span",
+            { staticClass: "text-danger align-middle hide not_valid_format" },
+            [
+              _c("i", { staticClass: "fa fa-close" }, [
+                _vm._v(" Błędne imię lub nazwisko")
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-3 field-label-responsive" }, [
+        _c("label", { attrs: { for: "name" } }, [_vm._v("Imię i nazwisko")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
+            _c(
+              "div",
+              {
+                staticClass: "input-group-addon",
+                staticStyle: { width: "2.6rem" }
+              },
+              [_c("i", { staticClass: "fa fa-user" })]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                name: "nazwisko",
+                id: "name",
+                placeholder: "Jan Kowalski",
+                value: "Kowalski",
                 required: "",
                 autofocus: "",
                 type: "text"
@@ -46172,6 +46119,7 @@ var staticRenderFns = [
                 name: "email",
                 id: "email",
                 placeholder: "jan.kowalski@przyklad.pl",
+                value: "jan.kowalski@przyklad.pl",
                 required: "",
                 autofocus: "",
                 type: "text"
@@ -46233,7 +46181,8 @@ var staticRenderFns = [
               attrs: {
                 name: "nr_telefonu",
                 id: "phone-number",
-                placeholder: "+48 123 456 789",
+                placeholder: "123 456 789",
+                value: "123 456 789",
                 required: "",
                 type: "text"
               }
@@ -46289,7 +46238,8 @@ var staticRenderFns = [
               attrs: {
                 name: "haslo",
                 id: "example-progress-bar",
-                placeholder: "min. 10 znaków",
+                placeholder: "min. 8 znaków",
+                value: "qwertyuiop",
                 required: "",
                 type: "password"
               }
@@ -46350,6 +46300,7 @@ var staticRenderFns = [
                 name: "ponownie_haslo",
                 id: "password-confirm",
                 placeholder: "powtórz hasło",
+                value: "qwertyuiop",
                 required: "",
                 type: "password"
               }
@@ -46384,15 +46335,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-85ef4954", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-56a40330", module.exports)
   }
 }
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

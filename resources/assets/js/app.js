@@ -18,8 +18,11 @@ import Vue from 'vue';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('home', require('./components/Home.vue'));
+Vue.component('registration', require('./components/Registration.vue'));
 
-const app = new Vue({
+var app = new Vue({
     el: '#app',
+    data: {
+		message: 'Hello'
+	},
 });
