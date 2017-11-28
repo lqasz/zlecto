@@ -43,4 +43,9 @@ class UserController extends Controller
 
      	return response('1', 200);
     }
+
+    public function index()
+    {
+        return view('main');
+    }
 }

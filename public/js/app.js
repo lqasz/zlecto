@@ -996,13 +996,30 @@ __webpack_require__(12);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('registration', __webpack_require__(53));
+var routes = {
+	'/': 'Home',
+	'/rejestracja': 'Registration'
+};
 
 var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
-  el: '#app',
-  data: {
-    message: 'Hello'
-  }
+	el: '#app',
+	data: {
+		currentRoute: window.location.pathname
+	},
+	computed: {
+		ViewComponent: function ViewComponent() {
+			var component = 'Home';
+
+			if (routes[this.currentRoute] !== undefined && routes[this.currentRoute] !== 'Home') {
+				component = routes[this.currentRoute];
+			}
+
+			return __webpack_require__(53)("./" + component + '/' + component + '.vue');
+		}
+	},
+	render: function render(h) {
+		return h(this.ViewComponent);
+	}
 });
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
@@ -45746,12 +45763,40 @@ module.exports = function normalizeComponent (
 /* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var map = {
+	"./Home/Home.vue": 61,
+	"./Registration/Registration.vue": 57,
+	"./Registration/Registration_Code.vue": 60
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 53;
+
+/***/ }),
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var disposed = false
 var normalizeComponent = __webpack_require__(40)
 /* script */
-var __vue_script__ = __webpack_require__(54)
+var __vue_script__ = __webpack_require__(59)
 /* template */
-var __vue_template__ = __webpack_require__(55)
+var __vue_template__ = __webpack_require__(58)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -45768,7 +45813,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\Registration.vue"
+Component.options.__file = "resources\\assets\\js\\components\\Registration\\Registration.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -45778,9 +45823,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-56a40330", Component.options)
+    hotAPI.createRecord("data-v-9cabec96", Component.options)
   } else {
-    hotAPI.reload("data-v-56a40330", Component.options)
+    hotAPI.reload("data-v-9cabec96", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -45791,7 +45836,463 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 54 */
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("form", { staticClass: "form-horizontal" }, [
+      _vm._m(0, false, false),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("input", {
+          attrs: { name: "_token", type: "hidden" },
+          domProps: { value: _vm.csrf }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _vm._m(1, false, false),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
+              _vm._m(2, false, false),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  name: "imie",
+                  id: "name",
+                  placeholder: "Jan",
+                  required: "",
+                  autofocus: "",
+                  type: "text"
+                },
+                on: { keyup: _vm.edit }
+              })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3" }, [
+          _c("div", { staticClass: "form-control-feedback" }, [
+            _vm._m(3, false, false),
+            _vm._v(" "),
+            _c(
+              "span",
+              { staticClass: "text-danger align-middle not_valid_format" },
+              [
+                _vm.errName
+                  ? _c("i", { staticClass: "fa fa-close" }, [
+                      _vm._v(_vm._s(_vm.errName))
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _vm._m(4, false, false),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
+              _vm._m(5, false, false),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  name: "nazwisko",
+                  id: "surname",
+                  placeholder: "Kowalski",
+                  required: "",
+                  autofocus: "",
+                  type: "text"
+                },
+                on: { keyup: _vm.edit }
+              })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3" }, [
+          _c("div", { staticClass: "form-control-feedback" }, [
+            _vm._m(6, false, false),
+            _vm._v(" "),
+            _c(
+              "span",
+              { staticClass: "text-danger align-middle not_valid_format" },
+              [
+                _vm.errSurname
+                  ? _c("i", { staticClass: "fa fa-close" }, [
+                      _vm._v(_vm._s(_vm.errSurname))
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _vm._m(7, false, false),
+        _vm._v(" "),
+        _vm._m(8, false, false),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3" }, [
+          _c("div", { staticClass: "form-control-feedback" }, [
+            _vm._m(9, false, false),
+            _vm._v(" "),
+            _c(
+              "span",
+              { staticClass: "text-danger align-middle not_valid_format" },
+              [
+                _vm.errEmail
+                  ? _c("i", { staticClass: "fa fa-close" }, [
+                      _vm._v(_vm._s(_vm.errEmail))
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(10, false, false),
+      _vm._v(" "),
+      _vm._m(11, false, false),
+      _vm._v(" "),
+      _vm._m(12, false, false),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-3" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              attrs: { type: "submit" },
+              on: { click: _vm.registration }
+            },
+            [
+              _c("i", { staticClass: "fa fa-user-plus" }),
+              _vm._v(" Zarejestruj\n                ")
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-3" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("h2", [_vm._v("Rejestracja")]),
+        _vm._v(" "),
+        _c("hr")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3 field-label-responsive" }, [
+      _c("label", { attrs: { for: "name" } }, [_vm._v("Imię")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "input-group-addon", staticStyle: { width: "2.6rem" } },
+      [_c("i", { staticClass: "fa fa-user" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-danger align-middle hide empty" }, [
+      _c("i", { staticClass: "fa fa-close" }, [_vm._v(" Podaj imię")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3 field-label-responsive" }, [
+      _c("label", { attrs: { for: "name" } }, [_vm._v("Nazwisko")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "input-group-addon", staticStyle: { width: "2.6rem" } },
+      [_c("i", { staticClass: "fa fa-user" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-danger align-middle hide empty" }, [
+      _c("i", { staticClass: "fa fa-close" }, [_vm._v(" Podaj nazwisko")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3 field-label-responsive" }, [
+      _c("label", { attrs: { for: "email" } }, [_vm._v("Adres email")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-6" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
+          _c(
+            "div",
+            {
+              staticClass: "input-group-addon",
+              staticStyle: { width: "2.6rem" }
+            },
+            [_c("i", { staticClass: "fa fa-at" })]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              name: "email",
+              id: "email",
+              placeholder: "jan.kowalski@przyklad.pl",
+              required: "",
+              autofocus: "",
+              type: "text"
+            }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-danger align-middle hide empty" }, [
+      _c("i", { staticClass: "fa fa-close" }, [_vm._v(" Podaj adres email")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-3 field-label-responsive" }, [
+        _c("label", { attrs: { for: "password" } }, [_vm._v("Numer telefonu")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
+            _c(
+              "div",
+              {
+                staticClass: "input-group-addon",
+                staticStyle: { width: "2.6rem" }
+              },
+              [
+                _c("i", {
+                  staticClass: "fa fa-phone",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                name: "nr_telefonu",
+                id: "phone-number",
+                placeholder: "+48 123 456 789",
+                required: "",
+                type: "text"
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "form-control-feedback" }, [
+          _c("span", { staticClass: "text-danger align-middle hide empty" }, [
+            _c("i", { staticClass: "fa fa-close" }, [
+              _vm._v(" Podaj numer telefonu")
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "span",
+            { staticClass: "text-danger align-middle hide not_valid_format" },
+            [
+              _c("i", { staticClass: "fa fa-close" }, [
+                _vm._v(" Błędny format numeru telefonu")
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-3 field-label-responsive" }, [
+        _c("label", { attrs: { for: "password" } }, [_vm._v("Podaj hasło")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("div", { staticClass: "form-group has-danger" }, [
+          _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
+            _c(
+              "div",
+              {
+                staticClass: "input-group-addon",
+                staticStyle: { width: "2.6rem" }
+              },
+              [_c("i", { staticClass: "fa fa-key" })]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                name: "haslo",
+                id: "example-progress-bar",
+                placeholder: "min. 8 znaków",
+                required: "",
+                type: "password"
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "form-control-feedback" }, [
+          _c("span", { staticClass: "text-danger align-middle hide empty" }, [
+            _c("i", { staticClass: "fa fa-close" }, [
+              _vm._v(" To pole jest wymagane")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-control-feedback" }, [
+          _c(
+            "span",
+            { staticClass: "text-danger align-middle hide not_valid_format" },
+            [
+              _c("i", { staticClass: "fa fa-close" }, [
+                _vm._v(" Hasło nie spełnia wymagań")
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-3 field-label-responsive" }, [
+        _c("label", { attrs: { for: "password" } }, [
+          _vm._v("Podaj ponownie hasło")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
+            _c(
+              "div",
+              {
+                staticClass: "input-group-addon",
+                staticStyle: { width: "2.6rem" }
+              },
+              [_c("i", { staticClass: "fa fa-repeat" })]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                name: "ponownie_haslo",
+                id: "password-confirm",
+                placeholder: "powtórz hasło",
+                required: "",
+                type: "password"
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "form-control-feedback" }, [
+          _c("span", { staticClass: "text-danger align-middle hide empty" }, [
+            _c("i", { staticClass: "fa fa-close" }, [
+              _vm._v(" To pole jest wymagane")
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticClass:
+                "text-danger align-middle hide haslo_not_valid_format"
+            },
+            [_c("i", { staticClass: "fa fa-close" }, [_vm._v(" Hasła różne")])]
+          )
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-9cabec96", module.exports)
+  }
+}
+
+/***/ }),
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45801,13 +46302,75 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var token = document.head.querySelector('meta[name="csrf-token"]');
 
         return {
-            csrf: token.content
+            csrf: token.content,
+            errName: "",
+            errSurname: "",
+            errTele: "",
+            errEmail: "",
+            errPass1: "",
+            errPass2: ""
         };
     },
 
     methods: {
+        edit: function edit(e) {
+
+            var err = false;
+            var $element = $(e.target);
+            var name = $element.attr("name");
+
+            if (name === "imie") {
+                this.errName = "";
+
+                if ($element.val().length < 3) {
+                    this.errName += "Imię powninno składać się z co najmniej trzech liter";
+                    err = true;
+                }
+
+                var regex = /^[^0-9\.\*\/\?\:\;\,\^\+\\\=\|!@#$%&()"'\-\_<>]*$/;
+
+                if (!regex.test($element.val())) {
+                    if (err) this.errName += "i nie może zawierać znaków specjalnych ani cyfr";else this.errName += "Imię nie może zawierać znaków specjalnych ani cyfr";
+                }
+            }
+
+            if (name === "nazwisko") {
+                this.errSurname = "";
+                if ($element.val().length < 3) {
+                    this.errSurname += "Nazwisko powninno składać się z co najmniej trzech liter";
+                    err = true;
+                }
+
+                var regex = /^[^0-9\.\*\/\?\:\;\,\^\+\\\=\|!@#$%&()"'\-\_<>]*$/;
+
+                if (!regex.test($element.val())) {
+                    if (err) this.errSurname += "i nie może zawierać znaków specjalnych ani cyfr";else this.errSurname += "Nazwisko nie może zawierać znaków specjalnych ani cyfr";
+                }
+            }
+
+            if (name === "email") {
+                this.errEmail = "";
+                var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+                if (!regex.test($element.val())) this.errEmail = "Błędny format email";
+            }
+
+            //opisac format emaila
+            if (name === "nazwisko") {
+                this.errEmail = "";
+                var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+                if (!regex.test($element.val())) this.errEmail = "Błędny format email";
+            }
+
+            err = false;
+            console.log(this.test);
+        },
+
         registration: function registration(e) {
             e.preventDefault();
+
+            console.log("info", this);
 
             var self = this,
                 fields = {},
@@ -45816,7 +46379,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'not_valid_format': {}
             };
 
-            $('.hide').css("display", "none");
+            // $('.hide').css("display", "none");
             $('.form-control').each(function (index, el) {
                 var value = $(el).val(),
                     name = $(el).attr('name'),
@@ -45885,7 +46448,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 valid = regex.test(value);
             } else if (name == "nr_telefonu") {
                 var value = value.trim(),
-                    regex = /^\+?([0-9]{3})[- ]?([0-9]{3})[- ]?([0-9]{3})$/;
+                    regex = /^\+?([0-9]{2})\)?[- ]?([0-9]{3})[- ]?([0-9]{3})[- ]?([0-9]{3})$/;
 
                 valid = regex.test(value);
             } else if (name == "haslo") {
@@ -45910,7 +46473,86 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 55 */
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Registration\\Registration_Code.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(62)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Home\\Home.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5912f316", Component.options)
+  } else {
+    hotAPI.reload("data-v-5912f316", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -45918,424 +46560,16 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("form", { staticClass: "form-horizontal" }, [
-      _vm._m(0, false, false),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("input", {
-          attrs: { name: "_token", type: "hidden" },
-          domProps: { value: _vm.csrf }
-        })
-      ]),
-      _vm._v(" "),
-      _vm._m(1, false, false),
-      _vm._v(" "),
-      _vm._m(2, false, false),
-      _vm._v(" "),
-      _vm._m(3, false, false),
-      _vm._v(" "),
-      _vm._m(4, false, false),
-      _vm._v(" "),
-      _vm._m(5, false, false),
-      _vm._v(" "),
-      _vm._m(6, false, false),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-3" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-success",
-              attrs: { type: "submit" },
-              on: { click: _vm.registration }
-            },
-            [
-              _c("i", { staticClass: "fa fa-user-plus" }),
-              _vm._v(" Zarejestruj\n                ")
-            ]
-          )
-        ])
-      ])
-    ])
+    _vm._v("\n   Głowny Widok\n")
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("h2", [_vm._v("Rejestracja")]),
-        _vm._v(" "),
-        _c("hr")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3 field-label-responsive" }, [
-        _c("label", { attrs: { for: "name" } }, [_vm._v("Imię i nazwisko")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
-            _c(
-              "div",
-              {
-                staticClass: "input-group-addon",
-                staticStyle: { width: "2.6rem" }
-              },
-              [_c("i", { staticClass: "fa fa-user" })]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "imie",
-                id: "name",
-                placeholder: "Jan Kowalski",
-                value: "Jan",
-                required: "",
-                autofocus: "",
-                type: "text"
-              }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("div", { staticClass: "form-control-feedback" }, [
-          _c("span", { staticClass: "text-danger align-middle hide empty" }, [
-            _c("i", { staticClass: "fa fa-close" }, [
-              _vm._v(" Podaj imię i nazwisko")
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "span",
-            { staticClass: "text-danger align-middle hide not_valid_format" },
-            [
-              _c("i", { staticClass: "fa fa-close" }, [
-                _vm._v(" Błędne imię lub nazwisko")
-              ])
-            ]
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3 field-label-responsive" }, [
-        _c("label", { attrs: { for: "name" } }, [_vm._v("Imię i nazwisko")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
-            _c(
-              "div",
-              {
-                staticClass: "input-group-addon",
-                staticStyle: { width: "2.6rem" }
-              },
-              [_c("i", { staticClass: "fa fa-user" })]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "nazwisko",
-                id: "name",
-                placeholder: "Jan Kowalski",
-                value: "Kowalski",
-                required: "",
-                autofocus: "",
-                type: "text"
-              }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("div", { staticClass: "form-control-feedback" }, [
-          _c("span", { staticClass: "text-danger align-middle hide empty" }, [
-            _c("i", { staticClass: "fa fa-close" }, [
-              _vm._v(" Podaj imię i nazwisko")
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "span",
-            { staticClass: "text-danger align-middle hide not_valid_format" },
-            [
-              _c("i", { staticClass: "fa fa-close" }, [
-                _vm._v(" Błędne imię lub nazwisko")
-              ])
-            ]
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3 field-label-responsive" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Adres email")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
-            _c(
-              "div",
-              {
-                staticClass: "input-group-addon",
-                staticStyle: { width: "2.6rem" }
-              },
-              [_c("i", { staticClass: "fa fa-at" })]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "email",
-                id: "email",
-                placeholder: "jan.kowalski@przyklad.pl",
-                value: "jan.kowalski@przyklad.pl",
-                required: "",
-                autofocus: "",
-                type: "text"
-              }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("div", { staticClass: "form-control-feedback" }, [
-          _c("span", { staticClass: "text-danger align-middle hide empty" }, [
-            _c("i", { staticClass: "fa fa-close" }, [
-              _vm._v(" Podaj adres email")
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "span",
-            { staticClass: "text-danger align-middle hide not_valid_format" },
-            [
-              _c("i", { staticClass: "fa fa-close" }, [
-                _vm._v(" Błędny adres email")
-              ])
-            ]
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3 field-label-responsive" }, [
-        _c("label", { attrs: { for: "password" } }, [_vm._v("Numer telefonu")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
-            _c(
-              "div",
-              {
-                staticClass: "input-group-addon",
-                staticStyle: { width: "2.6rem" }
-              },
-              [
-                _c("i", {
-                  staticClass: "fa fa-phone",
-                  attrs: { "aria-hidden": "true" }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "nr_telefonu",
-                id: "phone-number",
-                placeholder: "123 456 789",
-                value: "123 456 789",
-                required: "",
-                type: "text"
-              }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("div", { staticClass: "form-control-feedback" }, [
-          _c("span", { staticClass: "text-danger align-middle hide empty" }, [
-            _c("i", { staticClass: "fa fa-close" }, [
-              _vm._v(" Podaj numer telefonu")
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "span",
-            { staticClass: "text-danger align-middle hide not_valid_format" },
-            [
-              _c("i", { staticClass: "fa fa-close" }, [
-                _vm._v(" Błędny format numeru telefonu")
-              ])
-            ]
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3 field-label-responsive" }, [
-        _c("label", { attrs: { for: "password" } }, [_vm._v("Podaj hasło")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "form-group has-danger" }, [
-          _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
-            _c(
-              "div",
-              {
-                staticClass: "input-group-addon",
-                staticStyle: { width: "2.6rem" }
-              },
-              [_c("i", { staticClass: "fa fa-key" })]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "haslo",
-                id: "example-progress-bar",
-                placeholder: "min. 8 znaków",
-                value: "qwertyuiop",
-                required: "",
-                type: "password"
-              }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("div", { staticClass: "form-control-feedback" }, [
-          _c("span", { staticClass: "text-danger align-middle hide empty" }, [
-            _c("i", { staticClass: "fa fa-close" }, [
-              _vm._v(" To pole jest wymagane")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-control-feedback" }, [
-          _c(
-            "span",
-            { staticClass: "text-danger align-middle hide not_valid_format" },
-            [
-              _c("i", { staticClass: "fa fa-close" }, [
-                _vm._v(" Hasło nie spełnia wymagań")
-              ])
-            ]
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3 field-label-responsive" }, [
-        _c("label", { attrs: { for: "password" } }, [
-          _vm._v("Podaj ponownie hasło")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
-            _c(
-              "div",
-              {
-                staticClass: "input-group-addon",
-                staticStyle: { width: "2.6rem" }
-              },
-              [_c("i", { staticClass: "fa fa-repeat" })]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                name: "ponownie_haslo",
-                id: "password-confirm",
-                placeholder: "powtórz hasło",
-                value: "qwertyuiop",
-                required: "",
-                type: "password"
-              }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("div", { staticClass: "form-control-feedback" }, [
-          _c("span", { staticClass: "text-danger align-middle hide empty" }, [
-            _c("i", { staticClass: "fa fa-close" }, [
-              _vm._v(" To pole jest wymagane")
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticClass:
-                "text-danger align-middle hide haslo_not_valid_format"
-            },
-            [_c("i", { staticClass: "fa fa-close" }, [_vm._v(" Hasła różne")])]
-          )
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-56a40330", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-5912f316", module.exports)
   }
 }
 

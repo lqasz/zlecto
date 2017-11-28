@@ -18,11 +18,28 @@ import Vue from 'vue';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('registration', require('./components/Registration.vue'));
+const routes = {
+  '/': 'Home',
+  '/rejestracja': 'Registration'
+}
 
 var app = new Vue({
     el: '#app',
     data: {
-		message: 'Hello'
+	    currentRoute: window.location.pathname
 	},
+	computed: {
+		ViewComponent () {
+			var component = 'Home';
+
+			if(routes[this.currentRoute] !== undefined && routes[this.currentRoute] !== 'Home') {
+				component = routes[this.currentRoute];
+			}
+
+			return require('./components/'+component+'/'+component+'.vue');
+		}
+	},
+	render(h) { 
+		return h(this.ViewComponent) 
+	}
 });
