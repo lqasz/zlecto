@@ -41,7 +41,7 @@ class UserController extends Controller
             echo "błąd";
         }
 
-     	return response('1', 200);
+     	return view('main');
     }
 
     public function index()
