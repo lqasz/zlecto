@@ -10,3 +10,30 @@
 .hide{
 	display: none;
 }
+
+#wyszukiwarka {
+	:focus {
+		box-shadow: none;
+	}
+
+	div {
+		padding: 5rem;
+		padding-top: 0.3rem;
+	}
+
+	#szukajZlecen {
+		border-bottom-right-radius: 0px;
+		border-top-right-radius: 0px;
+	}
+
+	#SzukajLokalizacji {
+		border-radius: 0px;
+		background-color: #ddd;
+		color: #fff;
+	}
+
+	#szukaj {
+		border-bottom-left-radius: 0px;
+		border-top-left-radius: 0px;
+	}
+}

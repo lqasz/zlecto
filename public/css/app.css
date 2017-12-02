@@ -12776,3 +12776,29 @@ a.text-dark:hover {
   display: none;
 }
 
+#wyszukiwarka :focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+#wyszukiwarka div {
+  padding: 5rem;
+  padding-top: 0.3rem;
+}
+
+#wyszukiwarka #szukajZlecen {
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+#wyszukiwarka #SzukajLokalizacji {
+  border-radius: 0px;
+  background-color: #ddd;
+  color: #fff;
+}
+
+#wyszukiwarka #szukaj {
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
