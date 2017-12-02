@@ -82,18 +82,15 @@
                     <div class="form-group">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-phone" aria-hidden="true"></i></div>
-                            <input name="nr_telefonu" id="phone-number" placeholder="+48 123 456 789" required="" type="text"
-                                    class="form-control" v-validate="''">
+                            <input name="telefon" id="phone-number" placeholder="+48 123 456 789" required="" type="text"
+                                    class="form-control" v-validate="'required'" v-model="inputValues.telephone">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-control-feedback">
-                        <span class="text-danger align-middle hide empty">
-                            <i class="fa fa-close"> Podaj numer telefonu</i>
-                        </span>
                         <span class="text-danger align-middle not_valid_format">
-                            <i class="fa fa-close"></i>
+                            <i class="fa fa-close" v-show="errors.has('telefon')">{{ errors.first('telefon') }}</i>
                         </span>
                     </div>
                 </div>

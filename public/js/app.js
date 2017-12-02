@@ -53482,33 +53482,72 @@ var render = function() {
                   {
                     name: "validate",
                     rawName: "v-validate",
-                    value: "",
-                    expression: "''"
+                    value: "required",
+                    expression: "'required'"
+                  },
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.inputValues.telephone,
+                    expression: "inputValues.telephone"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: {
-                  name: "nr_telefonu",
+                  name: "telefon",
                   id: "phone-number",
                   placeholder: "+48 123 456 789",
                   required: "",
                   type: "text"
+                },
+                domProps: { value: _vm.inputValues.telephone },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.inputValues, "telephone", $event.target.value)
+                  }
                 }
               })
             ])
           ])
         ]),
         _vm._v(" "),
-        _vm._m(9, false, false)
+        _c("div", { staticClass: "col-md-3" }, [
+          _c("div", { staticClass: "form-control-feedback" }, [
+            _c(
+              "span",
+              { staticClass: "text-danger align-middle not_valid_format" },
+              [
+                _c(
+                  "i",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("telefon"),
+                        expression: "errors.has('telefon')"
+                      }
+                    ],
+                    staticClass: "fa fa-close"
+                  },
+                  [_vm._v(_vm._s(_vm.errors.first("telefon")))]
+                )
+              ]
+            )
+          ])
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _vm._m(10, false, false),
+        _vm._m(9, false, false),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-6" }, [
           _c("div", { staticClass: "form-group has-danger" }, [
             _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
-              _vm._m(11, false, false),
+              _vm._m(10, false, false),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -53574,12 +53613,12 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _vm._m(12, false, false),
+        _vm._m(11, false, false),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-6" }, [
           _c("div", { staticClass: "form-group" }, [
             _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
-              _vm._m(13, false, false),
+              _vm._m(12, false, false),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -53646,7 +53685,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(14, false, false)
+      _vm._m(13, false, false)
     ])
   ])
 }
@@ -53741,26 +53780,6 @@ var staticRenderFns = [
         })
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("div", { staticClass: "form-control-feedback" }, [
-        _c("span", { staticClass: "text-danger align-middle hide empty" }, [
-          _c("i", { staticClass: "fa fa-close" }, [
-            _vm._v(" Podaj numer telefonu")
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "span",
-          { staticClass: "text-danger align-middle not_valid_format" },
-          [_c("i", { staticClass: "fa fa-close" })]
-        )
-      ])
-    ])
   },
   function() {
     var _vm = this
