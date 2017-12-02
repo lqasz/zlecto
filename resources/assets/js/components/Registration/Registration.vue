@@ -19,14 +19,15 @@
                     <div class="form-group">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                            <input name="imie" class="form-control" id="name" placeholder="Jan" required="" autofocus="" type="text" @keyup="edit">
+                            <input name="imie" id="name" placeholder="Jan" type="text"
+                                   class="form-control" v-validate="'required|alpha|min:3'" v-model="inputValues.name">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle not_valid_format">
-                            <i v-if="errName" class="fa fa-close">{{ errName }}</i>
+                            <i class="fa fa-close" v-show="errors.has('imie')">{{ errors.first('imie') }}</i>
                         </span>
                     </div>
                 </div>
@@ -39,14 +40,15 @@
                     <div class="form-group">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                            <input name="nazwisko" class="form-control" id="surname" placeholder="Kowalski" required="" autofocus="" type="text" @keyup="edit">
+                            <input name="nazwisko" id="surname" placeholder="Kowalski" type="text"
+                                   class="form-control" v-validate="'required|alpha|min:3'" v-model="inputValues.surname">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle not_valid_format">
-                            <i v-if="errSurname"class="fa fa-close">{{ errSurname }}</i>
+                            <i class="fa fa-close" v-show="errors.has('nazwisko')">{{ errors.first('nazwisko') }}</i>
                         </span>
                     </div>
                 </div>
@@ -56,20 +58,18 @@
                     <label for="email">Adres email</label>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                            <input name="email" class="form-control" id="email" placeholder="jan.kowalski@przyklad.pl" required="" autofocus="" type="text" @keyup="edit" >
+                  <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                        <input name="email" id="email"  placeholder="jan.kowalski@przyklad.pl" type="text"
+                               class="form-control" v-validate="'required|email'" v-model="inputValues.email" >
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="form-control-feedback" v-if="Email[2]">
-                        <span class="text-danger align-middle hide empty">
-                            <i class="fa fa-close"> Podaj adres email</i>
-                        </span>
+                    <div class="form-control-feedback">
                         <span class="text-danger align-middle not_valid_format">
-                            <i v-if="errEmail" class="fa fa-close">{{ errEmail }}</i>
+                            <i class="fa fa-close" v-show="errors.has('email')">{{ errors.first('email') }}</i>
                         </span>
                     </div>
                 </div>
@@ -81,10 +81,9 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                            </div>
-                            <input name="nr_telefonu" class="form-control" id="phone-number" placeholder="+48 123 456 789" required="" type="text" @keyup="edit">
+                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                            <input name="nr_telefonu" id="phone-number" placeholder="+48 123 456 789" required="" type="text"
+                                    class="form-control" v-validate="''">
                         </div>
                     </div>
                 </div>
@@ -94,7 +93,7 @@
                             <i class="fa fa-close"> Podaj numer telefonu</i>
                         </span>
                         <span class="text-danger align-middle not_valid_format">
-                            <i v-if="errTele" class="fa fa-close"> {{ errTele }}</i>
+                            <i class="fa fa-close"></i>
                         </span>
                     </div>
                 </div>
@@ -107,26 +106,22 @@
                     <div class="form-group has-danger">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                            <input name="haslo" class="form-control" id="example-progress-bar" placeholder="min. 8 znaków" required="" type="password" @keyup="edit">
+                            <input name="haslo" id="example-progress-bar" placeholder="min. 8 znaków" type="password"
+                                   class="form-control" v-validate="'required|min:8'" v-model="inputValues.password1">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-control-feedback">
-                        <span class="text-danger align-middle hide empty">
-                            <i class="fa fa-close"> To pole jest wymagane</i>
-                        </span>
-                    </div>
-                    <div class="form-control-feedback">
                         <span class="text-danger align-middle not_valid_format">
-                            <i v-if="errPass1" class="fa fa-close"> {{ errPass1 }}</i>
+                            <i class="fa fa-close" v-show="errors.has('haslo')">{{ errors.first('haslo') }}</i>
                         </span>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3 field-label-responsive">
-                    <label for="password">Podaj ponownie hasło</label>
+                    <label for="password">Powtórz hasło</label>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
@@ -134,14 +129,15 @@
                             <div class="input-group-addon" style="width: 2.6rem">
                                 <i class="fa fa-repeat"></i>
                             </div>
-                            <input name="ponownie_haslo" class="form-control" id="password-confirm" placeholder="powtórz hasło" required="" type="password" @keyup="edit">
+                            <input name="hasloSprawdzenie" id="password-confirm" placeholder="powtórz hasło" type="password"
+                                   class="form-control" v-validate="'required|confirmed:haslo'" v-model="inputValues.password2">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle haslo_not_valid_format">
-                            <i v-if="errPass2" class="fa fa-close"> {{ errPass2 }}</i>
+                            <i class="fa fa-close" v-show="errors.has('hasloSprawdzenie')">{{ errors.first('hasloSprawdzenie')}}</i>
                         </span>
                     </div>
                 </div>

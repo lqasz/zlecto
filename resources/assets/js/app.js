@@ -11,12 +11,14 @@ global.Tether = tether;
 require('./bootstrap');
 
 import Vue from 'vue';
+import VeeValidate from 'vee-validate';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+Vue.use(VeeValidate);
 
 const routes = {
   '/': 'Home',
@@ -39,7 +41,7 @@ var app = new Vue({
 			return require('./components/'+component+'/'+component+'.vue');
 		}
 	},
-	render(h) { 
-		return h(this.ViewComponent) 
+	render(h) {
+		return h(this.ViewComponent)
 	}
 });
