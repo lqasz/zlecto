@@ -16,6 +16,10 @@
 
     </head>
     <body>
+        <nav class="navbar sticky-top navbar-light bg-faded">
+            <a class="navbar-brand" href="/">Zlec.to</a>
+        </nav>
+
         <div id="app">
             <template></template>
         </div>
