@@ -1,7 +1,10 @@
 export default {
     data: function() {
         return {
-            zlecenia: [],
+            data: {
+                zlecenia: [],
+                kategorie: [],
+            },
         }
     },
 
@@ -11,8 +14,9 @@ export default {
 
     methods: {
         fetchOrders() {
-            axios.get('v1/zlecenia').then((res) => {
-                this.zlecenia = res.data;
+            axios.get('v1/glowna').then((res) => {
+                this.data.zlecenia = res.data.zlecenia;
+                this.data.kategorie = res.data.kategorie;
             });
         },
     },

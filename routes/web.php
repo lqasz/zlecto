@@ -23,9 +23,10 @@ Route::post('zlecenia', 'OrderController@store');
 Route::put('zlecenia/{id}', 'OrderController@update');
 Route::delete('zlecenia/{id}', 'OrderController@destroy');
 
-Route::get('rejestracja', 'UserController@index');
-Route::post('rejestracja', 'UserController@storeNewUser');
+Route::get('/rejestracja', 'Auth\RegisterController@index');
 
 Route::prefix('v1')->group(function() {
-    Route::get('/zlecenia', 'OrderController@index');
+    Route::get('/glowna', 'HomeController@index');
+    // Route::get('/zapomniane', 'Auth\ForgotPasswordController@test');
+    Route::post('/rejestracja', 'Auth\RegisterController@register');
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Webpatser\Uuid\Uuid;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -36,7 +37,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        // $this->middleware('guest');
     }
 
     /**
@@ -48,9 +49,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'imie' => 'required|string|max:255|min:3',
+            'nazwisko' => 'required|string|max:255|min:2',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'nr_telefonu' => 'required|regex:/^\+?([0-9]{3})[- ]?([0-9]{3})[- ]?([0-9]{3})$/',
+            'haslo' => 'required|string|min:8|same:ponownie_haslo',
         ]);
     }
 
@@ -62,10 +65,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $user = new User;
+        $user->id = Uuid::generate()->string;
+        $user->id_portfela = Uuid::generate()->string;
+        $user->imie = $data['imie'];
+        $user->nazwisko = $data['nazwisko'];
+        $user->email = $data['email'];
+        $user->nr_telefonu = $data['nr_telefonu'];
+        $user->haslo = bcrypt($data['haslo']);
+        $user->status_uzytkownika = 'nieaktywny';
+        $user->save();
+
+        return $user;
+    }
+
+    public function index()
+    {
+        return view('main');
     }
 }
