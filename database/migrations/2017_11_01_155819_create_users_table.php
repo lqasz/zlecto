@@ -23,10 +23,10 @@ class CreateUsersTable extends Migration
             $table->dateTime('data_modyfikacji')->default(date('Y-m-d H:i:s'));
             $table->dateTime('data_zmiany_hasla')->default(date('Y-m-d H:i:s'));
             $table->boolean('czy_usunieto')->default(false);
-            $table->string('haslo');
+            $table->string('haslo')->nullable();
             $table->string('imie');
             $table->string('nazwisko');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('nr_telefonu');
             $table->enum('status_uzytkownika', ['aktywny', 'uspiony', 'nieaktywny'])->default('aktywny');
             $table->dateTime('ostatnie_logowanie')->default(date('Y-m-d H:i:s'));
@@ -35,6 +35,7 @@ class CreateUsersTable extends Migration
             $table->integer('ilosc_zamknietych_ogloszen')->default(0);
             $table->integer('ilosc_aktywnych_ogloszen')->default(0);
             $table->boolean('czy_administrator')->default(0);
+            $table->rememberToken();
         });
     }
 

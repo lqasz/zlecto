@@ -1,24 +1,43 @@
 <?php
 
-namespace App;
+namespace Laraspace;
 
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Foundation\Auth\Access\Authorizable;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract,
-	CanResetPasswordContract
+class User extends Authenticatable
 {
-	use Authenticatable, Authorizable, CanResetPassword;
+    use Notifiable;
 
-    public $timestamps = false;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'imie', 'nazwisko', 'email', 'haslo', 'nr_telefonu'
+    ];
 
-    public function __construct()
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'haslo', 'remember_token',
+    ];
+
+
+    public function isAdmin()
     {
+        return ($this->czy_administrator == '1');
+    }
 
+    public static function login($request)
+    {
+        $remember = $request->remember;
+        $email = $request->email;
+        $haslo = $request->haslo;
+        return (\Auth::attempt(['email' => $email, 'haslo' => $haslo], $remember));
     }
 }
