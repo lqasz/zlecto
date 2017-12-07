@@ -13,29 +13,23 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'id' => '12334343',
             'email' => 'admin@laraspace.in',
-            'imie' => 'Jan',
-            'nazwisko' => 'Kowalski',
-            'czy_administrator' => '1',
+            'name' => 'Jane Doe',
+            'role' => 'admin',
             'password' => bcrypt('admin@123')
         ]);
 
         User::create([
-            'id' => '12444343',
             'email' => 'shane@laraspace.in',
-            'imie' => 'Norwid',
-            'nazwisko' => 'Malinowski',
-            'czy_administrator' => '0',
+            'name' => 'Shane White',
+            'role' => 'user',
             'password' => bcrypt('hank@123')
         ]);
 
         User::create([
-            'id' => '12444113',
             'email' => 'adam@laraspace.in',
-            'imie' => 'Janusz',
-            'nazwisko' => 'Debeściak',
-            'czy_administrator' => '0',
+            'name' => 'Adam David',
+            'role' => 'user',
             'password' => bcrypt('jesse@123')
         ]);
     }

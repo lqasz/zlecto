@@ -8,7 +8,7 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::where('czy_administrator', '1')->get();
+        $users = User::where('role', 'user')->get();
 
         return view('admin.users.index')->with('users', $users);
     }

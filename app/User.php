@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'imie', 'nazwisko', 'email', 'haslo', 'nr_telefonu'
+        'name', 'email', 'password', 'facebook_id', 'google_id', 'github_id'
     ];
 
     /**
@@ -24,20 +24,20 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'haslo', 'remember_token',
+        'password', 'remember_token',
     ];
 
 
     public function isAdmin()
     {
-        return ($this->czy_administrator == '1');
+        return ($this->role == 'admin');
     }
 
     public static function login($request)
     {
         $remember = $request->remember;
         $email = $request->email;
-        $haslo = $request->haslo;
-        return (\Auth::attempt(['email' => $email, 'haslo' => $haslo], $remember));
+        $password = $request->password;
+        return (\Auth::attempt(['email' => $email, 'password' => $password], $remember));
     }
 }
