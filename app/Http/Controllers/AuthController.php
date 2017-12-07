@@ -40,7 +40,7 @@ class AuthController extends Controller
 
     public function register()
     {
-        return view('admin.sessions.register');
+        return view('index.sessions.registration');
     }
 
     /**
