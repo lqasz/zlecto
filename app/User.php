@@ -4,6 +4,7 @@ namespace Laraspace;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Webpatser\Uuid\Uuid;
 
 class User extends Authenticatable
 {
@@ -15,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'facebook_id', 'google_id', 'github_id'
+        'imie', 'nazwisko', 'email', 'nr_telefonu', 'haslo', 'facebook_id', 'google_id', 'twitter_id'
     ];
 
     /**
@@ -24,13 +25,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'haslo', 'remember_token',
     ];
 
 
     public function isAdmin()
     {
-        return ($this->role == 'admin');
+        return ($this->czy_administrator == '1');
     }
 
     public static function login($request)
@@ -39,5 +40,18 @@ class User extends Authenticatable
         $email = $request->email;
         $password = $request->password;
         return (\Auth::attempt(['email' => $email, 'password' => $password], $remember));
+    }
+
+    public static function register($request)
+    {
+        $this->id = Uuid::generate()->string;
+        $this->imie = $request->imie;
+        $this->nazwisko = $request->nazwisko;
+        $this->email = $request->email;
+        $this->nr_telefonu = $request->nr_telefonu;
+        $this->haslo = bcrypt($request->haslo);
+        $this->save();
+
+        return true;
     }
 }

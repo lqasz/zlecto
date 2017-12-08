@@ -334,6 +334,10 @@ Route::group(['middleware' => ['guest']], function () {
         'as' => 'login.post', 'uses' => 'AuthController@postLogin'
     ]);
 
+    Route::post('register', [
+        'as' => 'register.post', 'uses' => 'AuthController@postRegister'
+    ]);
+
     Route::get('forgot-password', [
         'as' => 'forgot-password.index', 'uses' => 'ForgotPasswordController@getEmail'
     ]);
@@ -356,9 +360,5 @@ Route::group(['middleware' => ['guest']], function () {
 });
 
 Route::get('logout', [
-    'as' => 'logout', 'uses' => 'AuthController@logout'
-]);
-
-Route::get('install', [
     'as' => 'logout', 'uses' => 'AuthController@logout'
 ]);

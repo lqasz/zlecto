@@ -43,6 +43,19 @@ class AuthController extends Controller
         return view('index.sessions.registration');
     }
 
+    public function postRegister(Requests\RegistrationRequest $request)
+    {
+        if (User::register($request)) {
+            return response()->json([
+                'message' => 'Działa',
+            ], 200);
+        }
+
+        return response()->json([
+            'message' => 'Błędy Błędy Błędy',
+        ], 403);
+    }
+
     /**
      * Redirect the user to the authentication page.
      *
