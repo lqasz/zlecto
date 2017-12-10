@@ -19,7 +19,7 @@ class CreateFavoriteUsersTable extends Migration
             $table->primary(['id_polubionego', 'id_polubiajacego']);
             $table->dateTime('data_dodania');
             $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_usunieto')->default(false);
+            $table->boolean('czy_usunieto');
         });
     }
 

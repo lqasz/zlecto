@@ -18,8 +18,8 @@ class CreateWalletTransactionsTable extends Migration
             $table->primary('id_transakcji');
             $table->uuid('id_portfela');
             $table->dateTime('data_dodania');
-            $table->float('stan_konta_przed', 8, 2)->default(0)->unsigned();
-            $table->float('stan_konta_po', 8, 2)->default(0)->unsigned();
+            $table->float('stan_konta_przed', 8, 2)->unsigned();
+            $table->float('stan_konta_po', 8, 2)->unsigned();
             $table->string('typ_transakcji');
         });
     }

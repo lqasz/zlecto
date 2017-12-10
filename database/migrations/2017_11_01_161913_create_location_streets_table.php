@@ -19,7 +19,7 @@ class CreateLocationStreetsTable extends Migration
             $table->uuid('id_lokalizacji');
             $table->dateTime('data_dodania');
             $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_usunieto')->default(false);
+            $table->boolean('czy_usunieto');
             $table->string('ulica');
             $table->string('kod_pocztowy');
         });

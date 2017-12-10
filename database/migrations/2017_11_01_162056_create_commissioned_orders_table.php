@@ -20,7 +20,7 @@ class CreateCommissionedOrdersTable extends Migration
             $table->dateTime('data_konca');
             $table->dateTime('data_dodania');
             $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_usunieto')->default(false);
+            $table->boolean('czy_usunieto');
         });
     }
 

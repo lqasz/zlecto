@@ -20,11 +20,11 @@ class CreateContractorOrdersTable extends Migration
             $table->uuid('id_zlecenia');
             $table->dateTime('data_dodania');
             $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_anulowano')->default(false);
-            $table->boolean('czy_zleceniodawca_zatwierdza')->default(false);
-            $table->boolean('czy_odrzucono')->default(false);
+            $table->boolean('czy_anulowano');
+            $table->boolean('czy_zleceniodawca_zatwierdza');
+            $table->boolean('czy_odrzucono');
             $table->text('tresc_zgloszenia');
-            $table->float('cena_wywolawcza', 8, 2)->default(0)->unsigned();
+            $table->float('cena_wywolawcza', 8, 2)->unsigned();
         });
     }
 

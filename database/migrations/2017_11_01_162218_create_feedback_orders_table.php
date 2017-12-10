@@ -20,7 +20,7 @@ class CreateFeedbackOrdersTable extends Migration
             $table->primary(['id_zlecenia', 'id_opinii', 'id_podmiotu_opinii']);
             $table->dateTime('data_dodania');
             $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_zarchiwizowano')->default(false);
+            $table->boolean('czy_zarchiwizowano');
         });
     }
 

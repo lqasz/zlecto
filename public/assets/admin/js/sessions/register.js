@@ -13,12 +13,23 @@ var RegisterForm = function () {
             focusInvalid: false, // do not focus the last invalid input
             ignore: "",  // validate all fields including form hidden input
             rules: {
+                first_name: {
+                    required: true,
+                    minlength: 3
+                },
+                last_name: {
+                    required: true,
+                    minlength: 2
+                },
+                phone_number: {
+                    required: true
+                },
                 email: {
                     required: true,
                     email: true
                 },
                 password: {
-                    minlength: 2,
+                    minlength: 8,
                     required: true
                 },
                 password_confirmation: {
@@ -41,7 +52,6 @@ var RegisterForm = function () {
                     .closest('.form-group').removeClass('has-danger'); // set success class to the control group
             },
         });
-
     };
 
 
@@ -54,6 +64,6 @@ var RegisterForm = function () {
 
 }();
 
-jQuery(document).ready(function() {
+$(document).ready(function() {
     RegisterForm.init();
 });

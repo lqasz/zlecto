@@ -21,7 +21,7 @@ class CreateRegisteredUsersTable extends Migration
             $table->dateTime('data_konca');
             $table->dateTime('data_dodania');
             $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_zarchiwizowano')->default(false);
+            $table->boolean('czy_zarchiwizowano');
         });
     }
 

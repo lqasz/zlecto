@@ -16,7 +16,7 @@ class AuthController extends Controller
 
     public function postLogin(Requests\LoginRequest $request)
     {
-        if (User::login($request)) {
+        if(User::login($request)) {
             flash()->success('Welcome to Laraspace.');
 
             if (Auth::user()->isAdmin()) {
@@ -27,7 +27,6 @@ class AuthController extends Controller
         }
 
         flash()->error('Invalid Login Credentials');
-
         return redirect()->back();
     }
 
@@ -45,15 +44,14 @@ class AuthController extends Controller
 
     public function postRegister(Requests\RegistrationRequest $request)
     {
-        if (User::register($request)) {
-            return response()->json([
-                'message' => 'Działa',
-            ], 200);
+
+        $user = new User();
+        if ($user->register($request)) {
+            flash()->success('Mail wysłany');
+            return view('index.sessions.registration-notifi');
         }
 
-        return response()->json([
-            'message' => 'Błędy Błędy Błędy',
-        ], 403);
+        return redirect()->to('/');
     }
 
     /**

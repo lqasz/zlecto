@@ -19,7 +19,7 @@ class CreateSubcategoriesTable extends Migration
             $table->uuid('id_kategorii_glownej');
             $table->dateTime('data_dodania');
             $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_usunieto')->default(false);
+            $table->boolean('czy_usunieto');
             $table->string('nazwa');
         });
     }

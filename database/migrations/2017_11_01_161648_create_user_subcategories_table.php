@@ -19,7 +19,7 @@ class CreateUserSubcategoriesTable extends Migration
             $table->primary(['id_uzytkownika', 'id_podkategorii']);
             $table->dateTime('data_dodania');
             $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_usunieto')->default(false);
+            $table->boolean('czy_usunieto');
         });
     }
 

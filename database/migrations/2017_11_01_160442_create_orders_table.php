@@ -28,7 +28,7 @@ class CreateOrdersTable extends Migration
             $table->boolean('czy_usunieto')->default(false);
             $table->string('nazwa', 50);
             $table->text('opis');
-            $table->float('cena_wyjsciowa', 8, 2)->default(0)->unsigned();
+            $table->float('cena_wyjsciowa', 8, 2)->unsigned();
             $table->boolean('czy_polecone')->default(false);
             $table->string('nr_telefonu');
             $table->string('email');

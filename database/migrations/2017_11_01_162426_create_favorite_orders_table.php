@@ -20,7 +20,7 @@ class CreateFavoriteOrdersTable extends Migration
             $table->uuid('id_zlecenia');
             $table->dateTime('data_dodania');
             $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_anulowano')->default(false);
+            $table->boolean('czy_anulowano');
         });
     }
 

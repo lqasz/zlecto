@@ -22,11 +22,11 @@ class RegistrationRequest extends Request
     public function rules()
     {
         return [
-            'imie' => 'required|string|max:255|min:3',
-            'nazwisko' => 'required|string|max:255|min:2',
-            'email' => 'required|string|email|max:255|unique:users',
-            'nr_telefonu' => 'required|regex:/^\+?([0-9]{3})[- ]?([0-9]{3})[- ]?([0-9]{3})$/',
-            'haslo' => 'required|string|min:8|same:ponownie_haslo',
+            'first_name' => 'required|string|max:20|min:3',
+            'last_name' => 'required|string|max:20|min:2',
+            'email' => 'required|email|string|max:20|unique:users',
+            'phone_number' => 'required|string|regex:/^\+?([0-9]{3})[- ]?([0-9]{3})[- ]?([0-9]{3})$/',
+            'password' => 'required|string|min:8|confirmed',
         ];
     }
 }
