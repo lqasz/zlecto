@@ -87,7 +87,7 @@ class User extends Authenticatable
                     'imie_nazwisko' => $imie_nazwisko, 
                     'kod_weryfikacyjny' => $kod_weryfikacyjny
                 ], function($mail) use ($email, $imie_nazwisko, $temat_wiadomosci) {
-                    $mail->from(getenv('FROM_EMAIL_ADDRESS'), "zlec.to");
+                    $mail->from(getenv('MAIL_FROM_ADDRESS'), "zlec.to");
                     $mail->to($email, $imie_nazwisko);
                     $mail->subject($temat_wiadomosci);
                 }); 
