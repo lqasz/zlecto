@@ -24,7 +24,7 @@ class RegistrationRequest extends Request
         return [
             'first_name' => 'required|string|max:20|min:3',
             'last_name' => 'required|string|max:20|min:2',
-            'email' => 'required|email|string|max:20|unique:users',
+            'email' => 'required|email|string|unique:users',
             'phone_number' => 'required|string|regex:/^\+?([0-9]{3})[- ]?([0-9]{3})[- ]?([0-9]{3})$/',
             'password' => 'required|string|min:8|confirmed',
         ];
