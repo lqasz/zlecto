@@ -7,6 +7,7 @@ use Webpatser\Uuid\Uuid;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Mail\Message;
 use DB, Hash, Mail;
+use Laraspace\Wallet;
 
 class User extends Authenticatable
 {
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'imie', 'nazwisko', 'email', 'nr_telefonu', 'haslo', 'facebook_id', 'google_id', 'twitter_id'
+        'first_name', 'last_name', 'email', 'phone_number', 'password', 'facebook_id', 'google_id', 'twitter_id'
     ];
 
     /**
@@ -26,15 +27,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'haslo', 'remember_token',
+        'password', 'remember_token',
     ];
-
-    public $timestamps = false;
-
-    public function isAdmin()
-    {
-        return ($this->czy_administrator == 1);
-    }
 
     public static function login($request)
     {
@@ -48,48 +42,40 @@ class User extends Authenticatable
     public function register($request)
     {
         $completed_registration = false;
-        $id_uzytkownika = Uuid::generate()->string;
-        $id_portfela = Uuid::generate()->string;
+        $user_id = Uuid::generate()->string;
+        $wallet_id = Uuid::generate()->string;
 
-        $this->id = $id_uzytkownika;
-        $this->id_portfela = $id_portfela;
-        $this->imie = $request->first_name;
-        $this->nazwisko = $request->last_name;
+        $this->id = $user_id;
+        $this->wallet_id = $wallet_id;
+        $this->first_name = $request->first_name;
+        $this->last_name = $request->last_name;
         $this->email = $request->email;
-        $this->data_dodania = date('Y-m-d H:i:s');
-        $this->data_modyfikacji = date('Y-m-d H:i:s');
-        $this->data_zmiany_hasla = date('Y-m-d H:i:s');
-        $this->nr_telefonu = $request->phone_number;
+        $this->phone_number = $request->phone_number;
         $this->password = Hash::make(sha1($request->password));
 
         if($this->save()) {
-            $kod_weryfikacyjny = str_random(30);
+            $token = str_random(30);
             DB::table('user_registration')->insert([
-                        'id_uzytkownika' => $id_uzytkownika,
-                        'token' => $kod_weryfikacyjny,
-                        'data_dodania' => date('Y-m-d H:i:s')
+                        'user_id' => $user_id,
+                        'token' => $token,
+                        'created_at' => date('Y-m-d H:i:s'),
+                        'updated_at' => date('Y-m-d H:i:s'),
                     ]);
 
-            DB::table('wallets')->insert([
-                        'id_portfela' => $id_portfela,
-                        'id_uzytkownika' => $id_uzytkownika,
-                        'data_dodania' => date('Y-m-d H:i:s'),
-                        'data_modyfikacji' => date('Y-m-d H:i:s'),
-                        'czy_usunieto' => 0,
-                        'stan_konta' => 0
-                    ]);
+            $wallet = new Wallet();
+            $wallet->create($wallet_id, $user_id);
 
-            $temat_wiadomosci = "Prosimy o zweryfikowanie adresu email.";
             $email = $this->email;
-            $imie_nazwisko = $this->imie ." ". $this->nazwisko;
+            $subject = "Prosimy o zweryfikowanie adresu email.";
+            $user_name = $this->first_name ." ". $this->last_name;
 
             Mail::send('index.sessions.registration', [
-                    'imie_nazwisko' => $imie_nazwisko, 
-                    'kod_weryfikacyjny' => $kod_weryfikacyjny
-                ], function($mail) use ($email, $imie_nazwisko, $temat_wiadomosci) {
+                    'user_name' => $user_name, 
+                    'token' => $token
+                ], function($mail) use ($email, $user_name, $subject) {
                     $mail->from("no-replay@zlec.to", "zlec.to");
-                    $mail->to($email, $imie_nazwisko);
-                    $mail->subject($temat_wiadomosci);
+                    $mail->to($email, $user_name);
+                    $mail->subject($subject);
                 }); 
 
             $completed_registration = true; 

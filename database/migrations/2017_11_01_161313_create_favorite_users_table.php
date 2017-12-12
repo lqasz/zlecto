@@ -14,12 +14,11 @@ class CreateFavoriteUsersTable extends Migration
     public function up()
     {
         Schema::create('favorite_users', function (Blueprint $table) {
-            $table->uuid('id_polubionego');
-            $table->uuid('id_polubiajacego');
-            $table->primary(['id_polubionego', 'id_polubiajacego']);
-            $table->dateTime('data_dodania');
-            $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_usunieto');
+            $table->uuid('liked_id');
+            $table->uuid('liking_id');
+            $table->primary(['liked_id', 'liking_id']);
+            $table->boolean('deleted')->default(false);
+            $table->timestamps();
         });
     }
 

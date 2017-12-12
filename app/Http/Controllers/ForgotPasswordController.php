@@ -51,14 +51,14 @@ class ForgotPasswordController extends Controller
     public function postReset(Request $request)
     {
         $this->validate($request, [
-            'password' => 'required|confirmed|min:6|max:16',
+            'password' => 'required|confirmed|min:8',
             'token' => 'required',
             'email' => 'required|email',
             'password_confirmation' => 'required|same:password'
         ]);
 
         $user = User::where('email', \Session::get('email'))->first();
-        $user->password = bcrypt($request->password);
+        $user->password = Hash::make(sha1($request->password));
         $user->save();
 
         \Auth::login($user, true);

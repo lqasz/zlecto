@@ -14,13 +14,13 @@ class CreateMessagesTable extends Migration
     public function up()
     {
         Schema::create('messages', function (Blueprint $table) {
-            $table->uuid('id_wiadomosci');
-            $table->primary('id_wiadomosci');
-            $table->uuid('id_zleceniodawcy');
-            $table->uuid('id_zleceniobiorcy');
-            $table->uuid('id_zlecenia');
-            $table->dateTime('data_dodania');
-            $table->boolean('czy_usunieto')->default(false);
+            $table->uuid('id');
+            $table->primary('id');
+            $table->uuid('principal_id');
+            $table->uuid('mandatory_id');
+            $table->uuid('order_id');
+            $table->boolean('deleted')->default(false);
+            $table->timestamps();
         });
     }
 

@@ -16,12 +16,11 @@ class CreateLocationStreetsTable extends Migration
         Schema::create('location_streets', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
-            $table->uuid('id_lokalizacji');
-            $table->dateTime('data_dodania');
-            $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_usunieto');
-            $table->string('ulica');
-            $table->string('kod_pocztowy');
+            $table->uuid('location_id');
+            $table->boolean('deleted')->default(false);
+            $table->string('street');
+            $table->string('postal_code');
+            $table->timestamps();
         });
     }
 

@@ -14,13 +14,12 @@ class CreateCommissionedOrdersTable extends Migration
     public function up()
     {
         Schema::create('commissioned_orders', function (Blueprint $table) {
-            $table->uuid('id_zlecenia');
-            $table->primary('id_zlecenia');
-            $table->dateTime('data_startu');
-            $table->dateTime('data_konca');
-            $table->dateTime('data_dodania');
-            $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_usunieto');
+            $table->uuid('order_id');
+            $table->primary('order_id');
+            $table->dateTime('date_start');
+            $table->dateTime('date_end');
+            $table->boolean('deleted')->default(false);
+            $table->timestamps();
         });
     }
 

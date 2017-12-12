@@ -16,26 +16,24 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
-            $table->uuid('id_lokalizacji')->nullable(true);
-            $table->uuid('id_portfela');
-            $table->uuid('awatar')->nullable(true);
-            $table->dateTime('data_dodania');
-            $table->dateTime('data_modyfikacji');
-            $table->dateTime('data_zmiany_hasla');
-            $table->boolean('czy_usunieto')->default(false);
+            $table->uuid('location_id')->nullable(true);
+            $table->uuid('wallet_id');
+            $table->uuid('avatar_id')->nullable(true);
+            $table->dateTime('changed_password_date')->nullable(true);
+            $table->dateTime('last_login_date')->nullable(true);
+            $table->boolean('deleted')->default(false);
             $table->string('password');
-            $table->string('imie');
-            $table->string('nazwisko');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email');
-            $table->string('nr_telefonu');
-            $table->enum('status_uzytkownika', ['aktywny', 'uspiony', 'nieaktywny'])->default('nieaktywny');
-            $table->dateTime('ostatnie_logowanie')->nullable(true);
-            $table->integer('ilosc_opinii')->default(0);
-            $table->integer('ilosc_dodanych_ogloszen')->default(0);
-            $table->integer('ilosc_zamknietych_ogloszen')->default(0);
-            $table->integer('ilosc_aktywnych_ogloszen')->default(0);
-            $table->boolean('czy_administrator')->default(0);
+            $table->string('phone_number');
+            $table->enum('status', ['active', 'sleeper', 'inactive'])->default('inactive');
+            $table->integer('opinions')->default(0);
+            $table->integer('orders')->default(0);
+            $table->integer('closed_orders')->default(0);
+            $table->integer('active_orders')->default(0);
             $table->rememberToken();
+            $table->timestamps();
         });
     }
 

@@ -338,6 +338,14 @@ Route::group(['middleware' => ['guest']], function () {
         'as' => 'register.post', 'uses' => 'AuthController@postRegister'
     ]);
 
+    Route::get('register/{token}', [
+        'as' => 'register.new_user', 'uses' => 'AuthController@getRegister'
+    ]);
+
+    Route::post('/register/new-user', [
+        'as' => 'register.new_user.post', 'uses' => 'AuthController@postRegisterNewUser'
+    ]);
+
     Route::get('forgot-password', [
         'as' => 'forgot-password.index', 'uses' => 'ForgotPasswordController@getEmail'
     ]);
@@ -347,7 +355,7 @@ Route::group(['middleware' => ['guest']], function () {
     ]);
 
     Route::get('/password/reset/{token}', [
-        'as' => 'password.reset', 'uses' => 'ForgotPasswordController@GetReset'
+        'as' => 'password.reset', 'uses' => 'ForgotPasswordController@getReset'
     ]);
 
     Route::post('/password/reset', [

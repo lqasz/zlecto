@@ -14,13 +14,12 @@ class CreateFeedbackOrdersTable extends Migration
     public function up()
     {
         Schema::create('feedback_orders', function (Blueprint $table) {
-            $table->uuid('id_zlecenia');
-            $table->uuid('id_opinii');
-            $table->uuid('id_podmiotu_opinii');
-            $table->primary(['id_zlecenia', 'id_opinii', 'id_podmiotu_opinii']);
-            $table->dateTime('data_dodania');
-            $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_zarchiwizowano');
+            $table->uuid('order_id');
+            $table->uuid('opinion_id');
+            $table->uuid('subject_id');
+            $table->primary(['order_id', 'opinion_id', 'subject_id']);
+            $table->boolean('archived');
+            $table->timestamps();
         });
     }
 

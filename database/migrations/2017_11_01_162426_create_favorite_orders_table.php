@@ -16,11 +16,10 @@ class CreateFavoriteOrdersTable extends Migration
         Schema::create('favorite_orders', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
-            $table->uuid('id_uzytkownika');
-            $table->uuid('id_zlecenia');
-            $table->dateTime('data_dodania');
-            $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_anulowano');
+            $table->uuid('user_id');
+            $table->uuid('order_id');
+            $table->boolean('canceled');
+            $table->timestamps();
         });
     }
 

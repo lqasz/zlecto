@@ -16,23 +16,22 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
-            $table->uuid('id_autora');
-            $table->uuid('id_katagorii');
-            $table->uuid('id_lokalizacji');
-            $table->dateTime('data_startu');
-            $table->dateTime('data_konca');
-            $table->dateTime('data_dodania');
-            $table->dateTime('data_modyfikacji');
-            $table->dateTime('data_archiwizacji');
-            $table->boolean('czy_zarchiwizowno')->default(false);
-            $table->boolean('czy_usunieto')->default(false);
-            $table->string('nazwa', 50);
-            $table->text('opis');
-            $table->float('cena_wyjsciowa', 8, 2)->unsigned();
-            $table->boolean('czy_polecone')->default(false);
-            $table->string('nr_telefonu');
+            $table->uuid('user_id');
+            $table->uuid('category_id');
+            $table->uuid('location_id');
+            $table->dateTime('date_start');
+            $table->dateTime('date_end');
+            $table->dateTime('date_of_archiving');
+            $table->boolean('archived')->default(false);
+            $table->boolean('deleted')->default(false);
+            $table->string('name', 50);
+            $table->text('description');
+            $table->float('starting_price', 8, 2)->unsigned();
+            $table->boolean('recomended')->default(false);
+            $table->string('phone_number');
             $table->string('email');
-            $table->integer('licznik_wyswietlen')->default(0);
+            $table->integer('number_of_views')->default(0);
+            $table->timestamps();
         });
     }
 

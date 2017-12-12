@@ -14,13 +14,12 @@ class CreateWalletsTable extends Migration
     public function up()
     {
         Schema::create('wallets', function (Blueprint $table) {
-            $table->uuid('id_portfela');
-            $table->primary('id_portfela');
-            $table->uuid('id_uzytkownika');
-            $table->dateTime('data_dodania');
-            $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_usunieto');
-            $table->float('stan_konta', 8, 2)->unsigned();
+            $table->uuid('id');
+            $table->primary('id');
+            $table->uuid('user_id');
+            $table->boolean('deleted')->default(false);
+            $table->float('balance', 8, 2)->unsigned();
+            $table->timestamps();
         });
     }
 

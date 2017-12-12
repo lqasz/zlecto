@@ -15,13 +15,12 @@ class CreateRegisteredUsersTable extends Migration
     {
         Schema::create('registered_users', function (Blueprint $table) {
             $table->uuid('id');
-            $table->uuid('id_uzytkownika');
+            $table->uuid('user_id');
             $table->primary('id');
-            $table->dateTime('data_startu');
-            $table->dateTime('data_konca');
-            $table->dateTime('data_dodania');
-            $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_zarchiwizowano');
+            $table->dateTime('date_start');
+            $table->dateTime('date_end');
+            $table->boolean('archived');
+            $table->timestamps();
         });
     }
 

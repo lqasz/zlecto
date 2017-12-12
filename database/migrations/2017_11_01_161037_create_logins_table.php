@@ -16,9 +16,9 @@ class CreateLoginsTable extends Migration
         Schema::create('logins', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
-            $table->uuid('id_uzytkownika');
-            $table->dateTime('czas_logowania');
-            $table->string('adres_ip');
+            $table->uuid('user_id');
+            $table->dateTime('login_date');
+            $table->string('ip_adress');
         });
     }
 

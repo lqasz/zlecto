@@ -14,17 +14,16 @@ class CreateContractorOrdersTable extends Migration
     public function up()
     {
         Schema::create('contractor_orders', function (Blueprint $table) {
-            $table->uuid('id_zgloszenia');
-            $table->primary('id_zgloszenia');
-            $table->uuid('id_zleceniobiorcy');
-            $table->uuid('id_zlecenia');
-            $table->dateTime('data_dodania');
-            $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_anulowano');
-            $table->boolean('czy_zleceniodawca_zatwierdza');
-            $table->boolean('czy_odrzucono');
-            $table->text('tresc_zgloszenia');
-            $table->float('cena_wywolawcza', 8, 2)->unsigned();
+            $table->uuid('id');
+            $table->primary('id');
+            $table->uuid('mandatory_id');
+            $table->uuid('order_id');
+            $table->boolean('canceled');
+            $table->boolean('principal_aproved');
+            $table->boolean('rejected');
+            $table->text('request_text');
+            $table->float('starting_price', 8, 2)->unsigned();
+            $table->timestamps();
         });
     }
 

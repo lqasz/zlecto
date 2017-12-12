@@ -14,12 +14,11 @@ class CreateUserSubcategoriesTable extends Migration
     public function up()
     {
         Schema::create('user_subcategories', function (Blueprint $table) {
-            $table->uuid('id_uzytkownika');
-            $table->uuid('id_podkategorii');
-            $table->primary(['id_uzytkownika', 'id_podkategorii']);
-            $table->dateTime('data_dodania');
-            $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_usunieto');
+            $table->uuid('user_id');
+            $table->uuid('subcategory_id');
+            $table->primary(['user_id', 'subcategory_id']);
+            $table->boolean('deleted')->default(false);
+            $table->timestamps();
         });
     }
 

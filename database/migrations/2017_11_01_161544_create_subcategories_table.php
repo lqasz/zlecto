@@ -16,11 +16,10 @@ class CreateSubcategoriesTable extends Migration
         Schema::create('subcategories', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
-            $table->uuid('id_kategorii_glownej');
-            $table->dateTime('data_dodania');
-            $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_usunieto');
-            $table->string('nazwa');
+            $table->uuid('main_category_id');
+            $table->boolean('deleted')->default(false);
+            $table->string('name');
+            $table->timestamps();
         });
     }
 

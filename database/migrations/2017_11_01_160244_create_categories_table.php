@@ -16,10 +16,9 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
-            $table->dateTime('data_dodania');
-            $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_usunieto')->default(false);
-            $table->string('nazwa');
+            $table->boolean('deleted')->default(false);
+            $table->string('name');
+            $table->timestamps();
         });
     }
 

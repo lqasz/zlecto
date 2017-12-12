@@ -18,12 +18,7 @@ class AuthController extends Controller
     {
         if(User::login($request)) {
             flash()->success('Welcome to Laraspace.');
-
-            if (Auth::user()->isAdmin()) {
-                return redirect()->to('/admin');
-            } else {
-                return redirect()->to('/');
-            }
+            return redirect()->to('/');
         }
 
         flash()->error('Invalid Login Credentials');
@@ -52,6 +47,25 @@ class AuthController extends Controller
         }
 
         return redirect()->to('/');
+    }
+
+    public function getRegister($token)
+    {
+        return view('admin.sessions.forgot-password.reset')->with('token', $token);
+    }
+
+    public function postRegisterNewUser(Requests $request)
+    {
+        $user_id = DB::table('user_registration')->where('token', $request['token'])->value('user_id');
+
+        $user = User::where('id', $user_id)->first();
+        $user->status = 'active';
+        $user->save();
+
+        Auth::login($user, true);
+
+        flash()->success('Zalogowano');
+        return redirect()->route('home');
     }
 
     /**

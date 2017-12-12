@@ -14,10 +14,10 @@ class UserRegistration extends Migration
     public function up()
     {
         Schema::create('user_registration', function (Blueprint $table) {
-            $table->uuid('id_uzytkownika');
-            $table->primary('id_uzytkownika');
+            $table->uuid('user_id');
+            $table->primary('user_id');
             $table->string('token');
-            $table->dateTime('data_dodania');
+            $table->timestamps();
         });
     }
 

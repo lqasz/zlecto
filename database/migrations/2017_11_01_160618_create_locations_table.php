@@ -16,11 +16,10 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
-            $table->dateTime('data_dodania');
-            $table->dateTime('data_modyfikacji');
-            $table->boolean('czy_usunieto')->default(false);
-            $table->string('wojewodztwo');
-            $table->string('miasto');
+            $table->boolean('deleted')->default(false);
+            $table->string('province');
+            $table->string('city');
+            $table->timestamps();
         });
     }
 
