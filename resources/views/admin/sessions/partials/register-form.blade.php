@@ -1,3 +1,4 @@
+
 <form action="" id="registerForm" method="post">
     {{csrf_field()}}
     <div class="form-group">

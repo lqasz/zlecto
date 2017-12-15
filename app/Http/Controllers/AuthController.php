@@ -34,7 +34,7 @@ class AuthController extends Controller
 
     public function register()
     {
-        return view('index.sessions.registration');
+        return view('index.sessions.register-2');
     }
 
     public function postRegister(Requests\RegistrationRequest $request)
