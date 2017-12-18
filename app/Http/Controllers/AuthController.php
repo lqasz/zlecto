@@ -39,7 +39,6 @@ class AuthController extends Controller
 
     public function postRegister(Requests\RegistrationRequest $request)
     {
-
         $user = new User();
         if ($user->register($request)) {
             flash()->success('Mail wysłany');

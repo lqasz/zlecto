@@ -21,6 +21,8 @@ class RegistrationRequest extends Request
      */
     public function rules()
     {
+        // dd($this->content);
+
         return [
             'first_name' => 'required|string|max:20|min:3',
             'last_name' => 'required|string|max:20|min:2',

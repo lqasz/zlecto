@@ -320,7 +320,7 @@ Route::group([
 |
 */
 
-Route::group(['middleware' => ['guest']], function () {
+Route::group(['middleware' => 'guest'], function () {
 
     Route::get('login', [
         'as' => 'login', 'uses' => 'AuthController@login'
@@ -334,9 +334,9 @@ Route::group(['middleware' => ['guest']], function () {
         'as' => 'login.post', 'uses' => 'AuthController@postLogin'
     ]);
 
-    Route::post('register', [
-        'as' => 'register.post', 'uses' => 'AuthController@postRegister'
-    ]);
+    Route::group(['prefix' => 'v1'], function() {
+        Route::post('register', 'AuthController@postRegister');
+    });
 
     Route::get('register/{token}', [
         'as' => 'register.new_user', 'uses' => 'AuthController@getRegister'

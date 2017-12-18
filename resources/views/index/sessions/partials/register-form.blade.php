@@ -1,117 +1,70 @@
 <div class="main-content">
   <div class="card">
     <div class="card-header">
-            <h6>Form Wizard with Vertical Steps</h6>
-        </div>
-      <div class="card-block">
-        <div class="content">
-          <form id="basic-wizard-4" class="form-wizard-2 vertical-wizard">
-            <h3>Krok 1</h3>
-              <section>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Imię</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label>Nazwisko</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label>Data urodzenia</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control ls-datepicker" value="06/10/2017">
-                        <span class="input-group-addon">
-                          <i class="icon-fa icon-fa-calendar"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Zainteresowania</label>
-                      <select class="form-control ls-select2">
-                        <option value="developing">Programowanie</option>
-                        <option value="singing">Śpiewanie</option>
-                        <option value="reading">Czytanie</option>
-                        <option value="internet-surfing">Surfowanie w internrcie</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label>Zawód</label>
-                      <input type="text" class="form-control" >
-                    </div>
-                  </div>
+        <h6>Form Wizard with Vertical Steps</h6>
+    </div>
+    <div class="card-block">
+      <div class="content">
+        <form id="basic-wizard-4" class="register-form form-wizard-2 vertical-wizard" method="POST">
+          {{csrf_field()}}
+          <h3>Krok 1</h3>
+          <section>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Imię</label>
+                  <input type="text" class="form-control" name="first_name" tabindex="1">
                 </div>
-              </section>
-              <h3>Krok 2</h3>
-              <section>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>e-mail</label>
-                      <input type="email" class="form-control">
-                    </div>
-                  <div class="form-group">
-                    <label>nr. telefonu</label>
-                    <input type="text" class="form-control">
-                  </div>
+                <div class="form-group">
+                  <label>Nazwisko</label>
+                  <input type="text" class="form-control" name="last_name" tabindex="2">
                 </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label>Hasło</label>
-                    <input type="password" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label>potwierdź hasło</label>
-                    <input type="password" class="form-control">
-                  </div>
+                <div class="form-group">
+                  <label>Hasło</label>
+                  <input type="password" class="form-control" id="password" name="password" tabindex="5">
                 </div>
               </div>
-            </section>
-            <h3>Krok 3</h3>
-            <section>
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label>Addres</label>
-                    <input type="text" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label>Addres cd.</label>
-                    <input type="text" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label>Miasto</label>
-                    <input type="text" class="form-control">
-                  </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>E-mail</label>
+                  <input type="email" class="form-control" name="email" tabindex="3">
                 </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label>Województwo</label>
-                    <input type="text" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label>Kod pocztowy</label>
-                    <input type="text" class="form-control">
-                  </div>
+                <div class="form-group">
+                  <label>Nr. telefonu</label>
+                  <input type="text" class="form-control" name="phone_number" tabindex="4">
+                </div>
+                <div class="form-group">
+                </div>
+                <div class="form-group">
+                  <label>Potwierdź hasło</label>
+                  <input type="password" class="form-control"  name="password_confirmation" tabindex="6">
                 </div>
               </div>
-            </section>
-            <h3>Krok 4</h3>
-            <section>
-            <div class="form-group">
-              <label>Facebook</label>
-              <input type="text" class="form-control" >
             </div>
-            <div class="form-group">
-              <label>Twitter</label>
-              <input type="text" class="form-control">
-            </div>
-            <div class="form-group">
-              <label>Google +</label>
-              <input type="text" class="form-control">
+          </section>
+          <h3>Krok 2</h3>
+          <section>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Województwo</label>
+                  <input type="text" class="form-control" name="region" tabindex="7">
+                </div>
+                <div class="form-group">
+                  <label>Addres</label>
+                  <textarea class="form-control" rows="3" name="adres" tabindex="9"></textarea>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Miasto</label>
+                  <input type="text" class="form-control" name="city" tabindex="8">
+                </div>
+                <div class="form-group">
+                  <label>Kod pocztowy</label>
+                  <input type="text" class="form-control" name="postal_code" tabindex="10">
+                </div>
+              </div>
             </div>
           </section>
         </form>
