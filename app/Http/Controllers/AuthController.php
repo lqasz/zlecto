@@ -5,7 +5,7 @@ namespace Laraspace\Http\Controllers;
 use Auth;
 use Laraspace\Http\Requests;
 use Laraspace\User;
-use Socialite;
+use Socialite, DB;
 
 class AuthController extends Controller
 {
@@ -50,12 +50,7 @@ class AuthController extends Controller
 
     public function getRegister($token)
     {
-        return view('admin.sessions.forgot-password.reset')->with('token', $token);
-    }
-
-    public function postRegisterNewUser(Requests $request)
-    {
-        $user_id = DB::table('user_registration')->where('token', $request['token'])->value('user_id');
+        $user_id = DB::table('user_registration')->where('token', $token)->value('user_id');
 
         $user = User::where('id', $user_id)->first();
         $user->status = 'active';
