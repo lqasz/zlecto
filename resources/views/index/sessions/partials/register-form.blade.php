@@ -48,7 +48,25 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label>Województwo</label>
-                  <input type="text" class="form-control" name="region" tabindex="7">
+                  <select class="form-control ls-select2" name="region">
+                      <option value="developing"></option>
+                      <option value="developing">dolnośląskie</option>
+                      <option value="singing">kujawsko-pomorskie</option>
+                      <option value="reading">lubelskie</option>
+                      <option value="internet-surfing">lubuskie</option>
+                      <option value="developing">łódzkie</option>
+                      <option value="singing">małopolskie</option>
+                      <option value="internet-surfing">mazowieckie</option>
+                      <option value="reading">opolskie</option>
+                      <option value="developing">podkarpackie</option>
+                      <option value="singing">podlaskie</option>
+                      <option value="reading">pomorskie</option>
+                      <option value="internet-surfing">śląskie</option>
+                      <option value="developing">świętokrzyskie</option>
+                      <option value="singing">warmińsko-mazurskie</option>
+                      <option value="reading">wielkopolskie</option>
+                      <option value="internet-surfing">zachodniopomorskie</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label>Addres</label>
