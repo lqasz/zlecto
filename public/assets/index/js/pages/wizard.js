@@ -62,7 +62,7 @@ var FormWizard = function () {
                   required: "To pole jest wymagane!",
                   minlength: "Zbyt krótki numer!",
                   maxlength: "Za długi numer!",
-                  telephoneFormat: "Błędny format numru telefonu!"
+          //        telephoneFormat: "Błędny format numru telefonu!"
               },
               email: {
                   required: "To pole jest wymagane!",
@@ -71,11 +71,11 @@ var FormWizard = function () {
               },
               password: {
                   minlength: "Hasło powinno się składać przynajmiej z 8 znaków!",
-                  required: "To pole jest wymagane!",
+                  required: "To pole jest wymagane!"
               },
               password_confirmation: {
                   required: "To pole jest wymagane!",
-                  equalTo: "Hasła nie są identyczne!",
+                  equalTo: "Hasła nie są identyczne!"
               }
             }
         });
@@ -91,6 +91,7 @@ var FormWizard = function () {
         jQuery.validator.addMethod("letterOnlyName",function(value, element) {
           return this.optional(element) || /^[A-Z]{1,}( [A-Z]{1,})?$/i.test(value);
         });
+
         jQuery.validator.addMethod("firstUpSurname",function(value, element) {
           return this.optional(element) || /^[A-Z]{1}.{1,}(( |\-)[A-Z]{1}.{1,})?(( |\-)[A-Z]{1}.{1,})?$/.test(value);
         });
@@ -102,6 +103,7 @@ var FormWizard = function () {
         jQuery.validator.addMethod("letterOnlySurmane",function(value, element) {
           return this.optional(element) || /^[A-Z]{1,}(( |\-)[A-Z]{1,})?(( |\-)[A-Z]{1,})?$/i.test(value);
         });
+
         jQuery.validator.addMethod("emailValid",function(value, element) {
           return this.optional(element) || /^[0-9a-z_.-]+@[0-9a-z.-]+\.[0-9a-z.-]{2,3}$/i.test(value);
         });
@@ -109,9 +111,7 @@ var FormWizard = function () {
         jQuery.validator.addMethod("telephoneFormat",function(value, element) {
           return this.optional(element) || /^(\([0-9]{2}\)|\+[0-9]{2}( |\-))?[0-9]{3}( |\-)?[0-9]{2,3}( |\-)?[0-9]{2,3}$/i.test(value);
         });
-        jQuery.validator.addMethod("passwordValid",function(value, element) {
-          return this.optional(element) || /^(\([0-9]{2}\)|\+[0-9]{2}( |\-))?[0-9]{3}( |\-)?[0-9]{2,3}( |\-)?[0-9]{2,3}$/i.test(value);
-        });
+
 
         form.steps({
             headerTag: "h3",
@@ -142,7 +142,11 @@ var FormWizard = function () {
                     phone_number: data.phone_number,
                     password: data.password,
                     password_confirmation: data.password_confirmation,
-                });
+                  }).then(function (response) {
+                      console.log(response);
+                  }).catch(function (error) {
+                      console.error(error);
+                  });
             }
         });
     };
