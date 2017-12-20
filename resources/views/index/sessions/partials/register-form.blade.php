@@ -1,7 +1,7 @@
 <div class="main-content">
   <div class="card">
     <div class="card-header">
-        <h6>Form Wizard with Vertical Steps</h6>
+      <h6>Form Wizard with Vertical Steps</h6>
     </div>
     <div class="card-block">
       <div class="content">
@@ -32,8 +32,6 @@
                 <div class="form-group">
                   <label>Nr. telefonu</label>
                   <input type="text" class="form-control" name="phone_number" tabindex="4">
-                </div>
-                <div class="form-group">
                 </div>
                 <div class="form-group">
                   <label>Potwierdź hasło</label>

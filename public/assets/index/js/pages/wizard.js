@@ -10,37 +10,41 @@ var FormWizard = function () {
             rules: {
                 first_name: {
                     minlength: 3,
-                    letterOnly: true,
+                    letterOnlyName: true,
                     required: true,
-                    firstUp: true,
-                    restDown: true
+                    firstUpName: true,
+                    restDownName: true
                 },
                 last_name: {
                     minlength: 2,
-                    letterOnly: true,
+                    letterOnlySurname: true,
                     required: true,
-                    firstUp: true,
-                    restDown: true
-
+                    firstUpSurname: true,
+                    restDownSurname: true
                 },
                 phone_number: {
                     required: true,
                     minlength: 7,
-                    maxlength: 15
+                    maxlength: 15,
+                    telephoneFormat: true
                 },
                 email: {
                     required: true,
                     emal: true,
-                    emailValid: true
+                    emailFormat: true
                 },
                 password: {
                     required: true,
-                    minlength: 8
+                    minlength: 8,
+                    passwordFormat: true
                 },
                 password_confirmation: {
                     required: true,
                     equalTo: "#password",
 
+                },
+                adres: {
+                  required: true,
                 }
             },
             messages: {
@@ -56,21 +60,22 @@ var FormWizard = function () {
                   minlength: "Nazwisko powinno się składać prznajmiej z 2 znaków!",
                   firstUpSurname: "Nazwisko musi zaczynać się z dużej litery!",
                   restDownSurname: "Duża litera dozwolona jest tylko na początku nazwiska lub każdego jego członu!",
-                  letterOnlySurmae: "Imię musi zawierać same litery!"
+                  letterOnlySurname: "Imię musi zawierać same litery!"
               },
               phone_number: {
                   required: "To pole jest wymagane!",
                   minlength: "Zbyt krótki numer!",
-                  maxlength: "Za długi numer!",
-          //        telephoneFormat: "Błędny format numru telefonu!"
+                  maxlength: "Zbyt długi numer!",
+                  telephoneFormat: "Błędny format numru telefonu!"
               },
               email: {
                   required: "To pole jest wymagane!",
                   email: "Adres e-mail msi zawierać znak \"@\"!",
-                  emailValid: "Błędny format e-mail!"
+                  emailFormat: "Błędny format e-mail!"
               },
               password: {
                   minlength: "Hasło powinno się składać przynajmiej z 8 znaków!",
+                  passwordFormat: "Hsało musi składać się z dużych i małych liter, cyfr i przynajmniej jednego z wymienionych znaków specjalnych: \"!\",\"@\",\"#\",\"$\",\"%\"",
                   required: "To pole jest wymagane!"
               },
               password_confirmation: {
@@ -85,31 +90,35 @@ var FormWizard = function () {
         });
 
         jQuery.validator.addMethod("restDownName",function(value, element) {
-          return this.optional(element) || /^[A-Z]{1}[a-z]{1,}( [A-Z]{1}[a-z]{1,})?$/.test(value);
+          return this.optional(element) || /^.[a-z ]{1,}$/.test(value);
         });
 
         jQuery.validator.addMethod("letterOnlyName",function(value, element) {
-          return this.optional(element) || /^[A-Z]{1,}( [A-Z]{1,})?$/i.test(value);
+          return this.optional(element) || /^[A-Z ]{1,}$/i.test(value);
         });
 
         jQuery.validator.addMethod("firstUpSurname",function(value, element) {
           return this.optional(element) || /^[A-Z]{1}.{1,}(( |\-)[A-Z]{1}.{1,})?(( |\-)[A-Z]{1}.{1,})?$/.test(value);
         });
 
-        jQuery.validator.addMethod("restDownSurmane",function(value, element) {
-          return this.optional(element) || /^[A-Z]{1}[a-z]{1,}(( |\-)[A-Z]{1}[a-z]{1,})?(( |\-)[A-Z]{1}[a-z]{1,})?$/.test(value);
+        jQuery.validator.addMethod("restDownSurname",function(value, element) {
+          return this.optional(element) || /^.[a-z -]{1,}$/.test(value);
         });
 
-        jQuery.validator.addMethod("letterOnlySurmane",function(value, element) {
-          return this.optional(element) || /^[A-Z]{1,}(( |\-)[A-Z]{1,})?(( |\-)[A-Z]{1,})?$/i.test(value);
+        jQuery.validator.addMethod("letterOnlySurname",function(value, element) {
+          return this.optional(element) || /^[A-Z -]{1,}$/i.test(value);
         });
 
-        jQuery.validator.addMethod("emailValid",function(value, element) {
-          return this.optional(element) || /^[0-9a-z_.-]+@[0-9a-z.-]+\.[0-9a-z.-]{2,3}$/i.test(value);
+        jQuery.validator.addMethod("emailFormat",function(value, element) {
+          return this.optional(element) || /^[0-9a-z_.-]+@[^.-]{1}[0-9a-z.-]*[0-9a-z]+\.[^.-]{1}[0-9a-z.-]{2,30}[^.-]{1}$/i.test(value);
         });
 
         jQuery.validator.addMethod("telephoneFormat",function(value, element) {
-          return this.optional(element) || /^(\([0-9]{2}\)|\+[0-9]{2}( |\-))?[0-9]{3}( |\-)?[0-9]{2,3}( |\-)?[0-9]{2,3}$/i.test(value);
+          return this.optional(element) || /^[0-9+() ]{1,}$/.test(value);
+        });
+
+        jQuery.validator.addMethod("passwordFormat",function(value, element) {
+          return this.optional(element) || /^(?=.*[!@#$%])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[0-9a-zA-Z\!\@\#\$\%]{1,}$/.test(value);
         });
 
 
