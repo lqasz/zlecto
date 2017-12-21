@@ -30,7 +30,6 @@ var FormWizard = function () {
                 },
                 email: {
                     required: true,
-                    emal: true,
                     emailFormat: true
                 },
                 password: {
@@ -45,6 +44,7 @@ var FormWizard = function () {
                 },
                 adres: {
                   required: true,
+                  adresValid: true
                 }
             },
             messages: {
@@ -59,7 +59,7 @@ var FormWizard = function () {
                   required: "To pole jest wymagane!",
                   minlength: "Nazwisko powinno się składać prznajmiej z 2 znaków!",
                   firstUpSurname: "Nazwisko musi zaczynać się z dużej litery!",
-                  restDownSurname: "Duża litera dozwolona jest tylko na początku nazwiska lub każdego jego członu!",
+                  restDownSurname: "Duża litera dozwolona jest tylko na początku nazwiska lub każdej jego części!",
                   letterOnlySurname: "Imię musi zawierać same litery!"
               },
               phone_number: {
@@ -70,7 +70,6 @@ var FormWizard = function () {
               },
               email: {
                   required: "To pole jest wymagane!",
-                  email: "Adres e-mail msi zawierać znak \"@\"!",
                   emailFormat: "Błędny format e-mail!"
               },
               password: {
@@ -81,7 +80,12 @@ var FormWizard = function () {
               password_confirmation: {
                   required: "To pole jest wymagane!",
                   equalTo: "Hasła nie są identyczne!"
+              },
+              adres: {
+                required: "To pole jest wymagane!",
+                adresValid: "To pole jest wymagane!"
               }
+
             }
         });
 
@@ -110,7 +114,7 @@ var FormWizard = function () {
         });
 
         jQuery.validator.addMethod("emailFormat",function(value, element) {
-          return this.optional(element) || /^[0-9a-z_.-]+@[^.-]{1}[0-9a-z.-]*[0-9a-z]+\.[^.-]{1}[0-9a-z.-]{2,30}[^.-]{1}$/i.test(value);
+          return this.optional(element) || /^[0-9a-z_.-]+@[^.-]{1}[0-9a-z.-]+\.[0-9a-z.-]{1,28}$/i.test(value);
         });
 
         jQuery.validator.addMethod("telephoneFormat",function(value, element) {
@@ -121,6 +125,9 @@ var FormWizard = function () {
           return this.optional(element) || /^(?=.*[!@#$%])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[0-9a-zA-Z\!\@\#\$\%]{1,}$/.test(value);
         });
 
+        jQuery.validator.addMethod("adresValid",function(value, element) {
+          return this.optional(element) || /^[A-Z0-9\- \/]$/i.test(value);
+        });
 
         form.steps({
             headerTag: "h3",
@@ -128,6 +135,7 @@ var FormWizard = function () {
             transitionEffect: "slideLeft",
             autoFocus: true,
             onStepChanging: function (event, currentIndex, newIndex) {
+                if (currentIndex > newIndex) return true;
                 form.validate().settings.ignore = ":disabled,:hidden";
                 return form.valid();
             },
