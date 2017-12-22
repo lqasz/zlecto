@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Mail\Message;
 use DB, Hash, Mail;
 use Laraspace\Wallet;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
