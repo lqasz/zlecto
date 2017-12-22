@@ -28,6 +28,7 @@ class RegisterLink extends Mailable
      */
     public function build()
     {
-        return $this->markdown('index.sessions.partials.regiser-link');
+        return $this->markdown('index.sessions.partials.regiser-link')->from("no-replay@zlec.to", "zlec.to")
+            ->subject("Prosimy o zweryfikowanie adresu email.");
     }
 }

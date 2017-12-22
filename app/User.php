@@ -70,10 +70,9 @@ class User extends Authenticatable
             $wallet->create($wallet_id, $user_id);
 
             $email = $this->email;
-            $subject = "Prosimy o zweryfikowanie adresu email.";
             $user_name = $this->first_name ." ". $this->last_name;
 
-            Mail::to($email, $user_name)->subject($subject)->send(new RegisterLink());
+            Mail::to($email, $user_name)->send(new RegisterLink());
 
             // Mail::send('index.sessions.partials.regiser-link', [
             //     'user_name' => $user_name, 
