@@ -9,6 +9,7 @@ use Illuminate\Mail\Message;
 use DB, Hash, Mail;
 use Laraspace\Wallet;
 use Illuminate\Notifications\Notifiable;
+use App\Mail\RegisterLink;
 
 class User extends Authenticatable
 {
@@ -72,14 +73,16 @@ class User extends Authenticatable
             $subject = "Prosimy o zweryfikowanie adresu email.";
             $user_name = $this->first_name ." ". $this->last_name;
 
-            Mail::send('index.sessions.partials.regiser-link', [
-                'user_name' => $user_name, 
-                'token' => $token
-            ], function($mail) use ($email, $user_name, $subject) {
-                $mail->from("no-replay@zlec.to", "zlec.to");
-                $mail->to($email, $user_name);
-                $mail->subject($subject);
-            }); 
+            Mail::to($email, $user_name)->subject($subject)->send(new RegisterLink());
+
+            // Mail::send('index.sessions.partials.regiser-link', [
+            //     'user_name' => $user_name, 
+            //     'token' => $token
+            // ], function($mail) use ($email, $user_name, $subject) {
+            //     $mail->from("no-replay@zlec.to", "zlec.to");
+            //     $mail->to($email, $user_name);
+            //     $mail->subject($subject);
+            // }); 
         }
 
         return completed_registration;

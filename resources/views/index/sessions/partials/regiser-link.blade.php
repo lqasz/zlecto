@@ -1,5 +1,12 @@
-@extends('index.layouts.layout-basic')
+@component('mail::message')
+# Introduction
 
-@section('content')
-    <div>Test test test</div>
-@stop
+The body of your message.
+
+@component('mail::button', ['url' => ''])
+Button Text
+@endcomponent
+
+Thanks,<br>
+{{ config('app.name') }}
+@endcomponent
