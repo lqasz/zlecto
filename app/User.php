@@ -69,7 +69,7 @@ class User extends Authenticatable
             $subject = "Prosimy o zweryfikowanie adresu email.";
             $user_name = $this->first_name ." ". $this->last_name;
 
-            Mail::send('index.sessions.registration', [
+            Mail::send('index.sessions.partials.regiser-link', [
                     'user_name' => $user_name, 
                     'token' => $token
                 ], function($mail) use ($email, $user_name, $subject) {
