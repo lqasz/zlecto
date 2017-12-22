@@ -46,7 +46,7 @@ class AuthController extends Controller
             flash()->error('Mail nie wysłany');
         }
 
-        return redirect()->to('/');
+        return redirect()->route('home');
     }
 
     public function getRegister($token)
