@@ -5,47 +5,44 @@ var FormWizard = function () {
 
         form.validate({
             errorPlacement: function errorPlacement(error, element) {
-                element.after(error);
+              element.after(error);
             },
             rules: {
-                first_name: {
-                    minlength: 3,
-                    letterOnlyName: true,
-                    required: true,
-                    firstUpName: true,
-                    restDownName: true
-                },
-                last_name: {
-                    minlength: 2,
-                    letterOnlySurname: true,
-                    required: true,
-                    firstUpSurname: true,
-                    restDownSurname: true
-                },
-                phone_number: {
-                    required: true,
-                    minlength: 7,
-                    maxlength: 15,
-                    telephoneFormat: true
-                },
-                email: {
-                    required: true,
-                    emal: true,
-                    emailFormat: true
-                },
-                password: {
-                    required: true,
-                    minlength: 8,
-                    passwordFormat: true
-                },
-                password_confirmation: {
-                    required: true,
-                    equalTo: "#password",
-
-                },
-                adres: {
+              first_name: {
+                  minlength: 3,
+                  letterOnlyName: true,
                   required: true,
-                }
+                  firstUpName: true,
+                  restDownName: true
+              },
+              last_name: {
+                  minlength: 2,
+                  letterOnlySurname: true,
+                  required: true,
+                  firstUpSurname: true,
+                  restDownSurname: true
+              },
+              phone_number: {
+                  required: true,
+                  minlength: 7,
+                  maxlength: 15,
+                  telephoneFormat: true
+              },
+              email: {
+                  required: true,
+                  emal: true,
+                  emailFormat: true
+              },
+              password: {
+                  required: true,
+                  minlength: 8,
+                  passwordFormat: true
+              },
+              password_confirmation: {
+                  required: true,
+                  equalTo: "#password",
+
+              },
             },
             messages: {
               first_name: {

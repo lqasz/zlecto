@@ -47,14 +47,13 @@
                 <div class="form-group">
                   <label>Województwo</label>
                   <select class="form-control ls-select2" name="region">
-                      <option value="developing"></option>
                       <option value="developing">dolnośląskie</option>
                       <option value="singing">kujawsko-pomorskie</option>
                       <option value="reading">lubelskie</option>
                       <option value="internet-surfing">lubuskie</option>
                       <option value="developing">łódzkie</option>
                       <option value="singing">małopolskie</option>
-                      <option value="internet-surfing">mazowieckie</option>
+                      <option value="internet-surfing" selected="selected">mazowieckie</option>
                       <option value="reading">opolskie</option>
                       <option value="developing">podkarpackie</option>
                       <option value="singing">podlaskie</option>
@@ -67,7 +66,7 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label>Addres</label>
+                  <label>Adres</label>
                   <textarea class="form-control" rows="3" name="adres" tabindex="9"></textarea>
                 </div>
               </div>
