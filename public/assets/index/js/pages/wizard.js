@@ -42,10 +42,6 @@ var FormWizard = function () {
                     equalTo: "#password",
 
                 },
-                adres: {
-                  required: true,
-                  adresValid: true
-                }
             },
             messages: {
               first_name: {
