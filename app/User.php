@@ -57,6 +57,7 @@ class User extends Authenticatable
 
         if($this->save()) {
             $token = str_random(30);
+            $completed_registration = true;
             DB::table('user_registration')->insert([
                         'user_id' => $user_id,
                         'token' => $token,
@@ -71,16 +72,14 @@ class User extends Authenticatable
             $subject = "Prosimy o zweryfikowanie adresu email.";
             $user_name = $this->first_name ." ". $this->last_name;
 
-            Mail::queue('index.sessions.partials.regiser-link', [
-                    'user_name' => $user_name, 
-                    'token' => $token
-                ], function($mail) use ($email, $user_name, $subject) {
-                    $mail->from("no-replay@zlec.to", "zlec.to");
-                    $mail->to($email, $user_name);
-                    $mail->subject($subject);
-                }); 
-
-            $completed_registration = true; 
+            Mail::send('index.sessions.partials.regiser-link', [
+                'user_name' => $user_name, 
+                'token' => $token
+            ], function($mail) use ($email, $user_name, $subject) {
+                $mail->from("no-replay@zlec.to", "zlec.to");
+                $mail->to($email, $user_name);
+                $mail->subject($subject);
+            }); 
         }
 
         return completed_registration;
