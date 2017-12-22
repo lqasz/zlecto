@@ -42,7 +42,6 @@ class AuthController extends Controller
         $user = new User();
         if ($user->register($request)) {
             flash()->success('Mail wysłany');
-            return view('index.sessions.registration-notifi');
         }
 
         return redirect()->to('/');
