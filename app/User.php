@@ -9,7 +9,7 @@ use Illuminate\Mail\Message;
 use DB, Hash, Mail;
 use Laraspace\Wallet;
 use Illuminate\Notifications\Notifiable;
-use App\Mail\RegisterLink;
+use Laraspace\Mail\RegisterLink;
 
 class User extends Authenticatable
 {
