@@ -72,16 +72,7 @@ class User extends Authenticatable
             $email = $this->email;
             $user_name = $this->first_name ." ". $this->last_name;
 
-            Mail::to($email, $user_name)->send(new RegisterLink());
-
-            // Mail::send('index.sessions.partials.regiser-link', [
-            //     'user_name' => $user_name, 
-            //     'token' => $token
-            // ], function($mail) use ($email, $user_name, $subject) {
-            //     $mail->from("no-replay@zlec.to", "zlec.to");
-            //     $mail->to($email, $user_name);
-            //     $mail->subject($subject);
-            // }); 
+            Mail::to($email, $user_name)->send(new RegisterLink()); 
         }
 
         return completed_registration;

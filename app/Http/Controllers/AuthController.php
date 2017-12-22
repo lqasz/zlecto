@@ -42,6 +42,8 @@ class AuthController extends Controller
         $user = new User();
         if ($user->register($request)) {
             flash()->success('Mail wysłany');
+        } else {
+            flash()->error('Mail nie wysłany');
         }
 
         return redirect()->to('/');
