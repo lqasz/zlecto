@@ -5,9 +5,9 @@
     </div>
     <div class="card-block">
       <div class="content">
-        <form id="basic-wizard-4" class="register-form form-wizard-2 vertical-wizard" method="POST">
+        <form id="basic-wizard-4" class="register-form form-wizard-2 icon-wizard" method="POST">
           {{csrf_field()}}
-          <h3>Krok 1</h3>
+          <h3><i class="icon-fa icon-fa-key"></i></h3>
           <section>
             <div class="row">
               <div class="col-lg-6">
@@ -40,7 +40,7 @@
               </div>
             </div>
           </section>
-          <h3>Krok 2</h3>
+          <h3><i class="icon-fa icon-fa-map-marker"></i></h3>
           <section>
             <div class="row">
               <div class="col-lg-6">
