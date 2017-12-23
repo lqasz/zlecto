@@ -75,6 +75,6 @@ class User extends Authenticatable
             Mail::to($email, $user_name)->send(new RegisterLink()); 
         }
 
-        return completed_registration;
+        return $completed_registration;
     }
 }
