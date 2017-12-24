@@ -9,18 +9,18 @@ var FormWizard = function () {
             },
             rules: {
                 first_name: {
+                    required: true,
                     minlength: 3,
                     letterOnlyName: true,
-                    required: true,
                     firstUpName: true,
                     restDownName: true
                 },
                 last_name: {
-                    minlength: 2,
-                    letterOnlySurname: true,
                     required: true,
-                    firstUpSurname: true,
-                    restDownSurname: true
+                    minlength: 2,
+                    firstUpOnPart: true,
+                    firstUpOnPart: true,
+                    restDownOnPart: true
                 },
                 phone_number: {
                     required: true,
@@ -45,7 +45,18 @@ var FormWizard = function () {
                 adres: {
                   required: true,
                   adresValid: true
-                }
+                },
+                city: {
+                  required: true,
+                  minlength: 2,
+                  firstUpOnPart: true,
+                  firstUpOnPart: true,
+                  restDownOnPart: true
+                },
+                post_code: {
+                    required: true,
+                    postValid: true
+                },
             },
             messages: {
               first_name: {
@@ -58,7 +69,7 @@ var FormWizard = function () {
               last_name: {
                   required: "To pole jest wymagane!",
                   minlength: "Nazwisko powinno się składać prznajmiej z 2 znaków!",
-                  firstUpSurname: "Nazwisko musi zaczynać się z dużej litery!",
+                  firstUpOnPart: "Nazwisko musi zaczynać się z dużej litery!",
                   restDownSurname: "Duża litera dozwolona jest tylko na początku nazwiska lub każdej jego części!",
                   letterOnlySurname: "Imię musi zawierać same litery!"
               },
@@ -84,33 +95,44 @@ var FormWizard = function () {
               adres: {
                 required: "To pole jest wymagane!",
                 adresValid: "To pole jest wymagane!"
-              }
+              },
+              city: {
+                  required: "To pole jest wymagane!",
+                  minlength: "Nazwa misata powinna się składać prznajmiej z 2 znaków!",
+                  firstUpOnPart: "Nazwa m musi zaczynać się z dużej litery!",
+                  restDownPart: "Duża litera dozwolona jest tylko na początku nazwiska lub każdej jego części!",
+                  letterOnlyOnPart: "Imię musi zawierać same litery!"
+              },
+              post_code: {
+                  required: "To pole jest wymagane!",
+                  postValid: "Błędny format kodu pocztowego"
+              },
 
             }
         });
 
         jQuery.validator.addMethod("firstUpName",function(value, element) {
-          return this.optional(element) || /^[A-Z]{1}.{1,}( [A-Z]{1}.{1,})?$/.test(value);
+          return this.optional(element) || /^[A-ZŁŚĆĄŻŹÓŃĄĘ]{1}.{1,}( [A-Z]{1}.{1,})?$/.test(value);
         });
 
         jQuery.validator.addMethod("restDownName",function(value, element) {
-          return this.optional(element) || /^.[a-z ]{1,}$/.test(value);
+          return this.optional(element) || /^.[a-ząęóśćżźńł ]{1,}$/.test(value);
         });
 
         jQuery.validator.addMethod("letterOnlyName",function(value, element) {
-          return this.optional(element) || /^[A-Z ]{1,}$/i.test(value);
+          return this.optional(element) || /^[A-ZŁŚĆĄŻŹÓŃĄĘ ]{1,}$/i.test(value);
         });
 
-        jQuery.validator.addMethod("firstUpSurname",function(value, element) {
-          return this.optional(element) || /^[A-Z]{1}.{1,}(( |\-)[A-Z]{1}.{1,})?(( |\-)[A-Z]{1}.{1,})?$/.test(value);
+        jQuery.validator.addMethod("firstUpOnPart",function(value, element) {
+          return this.optional(element) || /^[A-ZŁŚĆĄŻŹÓŃĄĘ]{1}.{1,}(( |\-)[A-Z]{1}.{1,})?(( |\-)[A-Z]{1}.{1,})?$/.test(value);
         });
 
-        jQuery.validator.addMethod("restDownSurname",function(value, element) {
-          return this.optional(element) || /^.[a-z -]{1,}$/.test(value);
+        jQuery.validator.addMethod("restDownOnPart",function(value, element) {
+          return this.optional(element) || /^.[a-ząęóśćżźńł -]{1,}$/.test(value);
         });
 
-        jQuery.validator.addMethod("letterOnlySurname",function(value, element) {
-          return this.optional(element) || /^[A-Z -]{1,}$/i.test(value);
+        jQuery.validator.addMethod("letterOnlyOnPart",function(value, element) {
+          return this.optional(element) || /^[A-ZŁŚĆĄŻŹÓŃĄĘ -]{1,}$/i.test(value);
         });
 
         jQuery.validator.addMethod("emailFormat",function(value, element) {
@@ -129,10 +151,14 @@ var FormWizard = function () {
           return this.optional(element) || /^[A-Z0-9\- \/]$/i.test(value);
         });
 
+        jQuery.validator.addMethod("postValid",function(value, element) {
+          return this.optional(element) || /^[0-9]{2}-[0-9]{3}$/.test(value);
+        });
+
         form.steps({
             headerTag: "h3",
             bodyTag: "section",
-            transitionEffect: "slideLeft",
+            transitionEffect: "slide",
             autoFocus: true,
             onStepChanging: function (event, currentIndex, newIndex) {
                 if (currentIndex > newIndex) return true;

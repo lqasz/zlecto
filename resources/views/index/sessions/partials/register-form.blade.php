@@ -1,7 +1,7 @@
 <div class="main-content">
   <div class="card">
     <div class="card-header">
-      <h6>Form Wizard with Vertical Steps</h6>
+      <h6>Rejesrtacja</h6>
     </div>
     <div class="card-block">
       <div class="content">
@@ -13,11 +13,11 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label>Imię</label>
-                  <input type="text" class="form-control" name="first_name" tabindex="1">
+                  <input type="text" class="form-control" name="first_name" tabindex="1" placeholder="Jan">
                 </div>
                 <div class="form-group">
                   <label>Nazwisko</label>
-                  <input type="text" class="form-control" name="last_name" tabindex="2">
+                  <input type="text" class="form-control" name="last_name" tabindex="2" placeholder="Kowalski">
                 </div>
                 <div class="form-group">
                   <label>Hasło</label>
@@ -27,11 +27,11 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label>E-mail</label>
-                  <input type="email" class="form-control" name="email" tabindex="3">
+                  <input type="email" class="form-control" name="email" tabindex="3" placeholder="jan_kowalski@gmail.com">
                 </div>
                 <div class="form-group">
                   <label>Nr. telefonu</label>
-                  <input type="text" class="form-control" name="phone_number" tabindex="4">
+                  <input type="text" class="form-control" name="phone_number" tabindex="4" placeholder="111 222 333">
                 </div>
                 <div class="form-group">
                   <label>Potwierdź hasło</label>
@@ -46,39 +46,39 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label>Województwo</label>
-                  <select class="form-control ls-select2" name="region">
-                      <option value="developing"></option>
-                      <option value="developing">dolnośląskie</option>
-                      <option value="singing">kujawsko-pomorskie</option>
-                      <option value="reading">lubelskie</option>
-                      <option value="internet-surfing">lubuskie</option>
-                      <option value="developing">łódzkie</option>
-                      <option value="singing">małopolskie</option>
-                      <option value="internet-surfing">mazowieckie</option>
-                      <option value="reading">opolskie</option>
-                      <option value="developing">podkarpackie</option>
-                      <option value="singing">podlaskie</option>
-                      <option value="reading">pomorskie</option>
-                      <option value="internet-surfing">śląskie</option>
-                      <option value="developing">świętokrzyskie</option>
-                      <option value="singing">warmińsko-mazurskie</option>
-                      <option value="reading">wielkopolskie</option>
-                      <option value="internet-surfing">zachodniopomorskie</option>
+                  <select class="form-control ls-select2" name="region" required>
+                      <option value="" disable selected style="display: none;">Wybierz województwo</option>
+                      <option>dolnośląskie</option>
+                      <option>kujawsko-pomorskie</option>
+                      <option>lubelskie</option>
+                      <option>lubuskie</option>
+                      <option>łódzkie</option>
+                      <option>małopolskie</option>
+                      <option>mazowieckie</option>
+                      <option>opolskie</option>
+                      <option>podkarpackie</option>
+                      <option>podlaskie</option>
+                      <option>pomorskie</option>
+                      <option>śląskie</option>
+                      <option>świętokrzyskie</option>
+                      <option>warmińsko-mazurskie</option>
+                      <option>wielkopolskie</option>
+                      <option>zachodniopomorskie</option>
                   </select>
                 </div>
                 <div class="form-group">
-                  <label>Addres</label>
+                  <label>Adres</label>
                   <textarea class="form-control" rows="3" name="adres" tabindex="9"></textarea>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label>Miasto</label>
+                  <label>Miasto lub miejscowość</label>
                   <input type="text" class="form-control" name="city" tabindex="8">
                 </div>
                 <div class="form-group">
                   <label>Kod pocztowy</label>
-                  <input type="text" class="form-control" name="postal_code" tabindex="10">
+                  <input type="text" class="form-control" name="post_code" tabindex="10" placeholder="55-555">
                 </div>
               </div>
             </div>
