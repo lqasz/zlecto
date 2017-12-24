@@ -8,10 +8,13 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Mail\Message;
 use DB, Hash, Mail;
 use Laraspace\Wallet;
+use Illuminate\Notifications\Notifiable;
+use Laraspace\Mail\RegisterLink;
 
 class User extends Authenticatable
 {
 
+    use Notifiable;
     /**
      * The attributes that are mass assignable.
      *
@@ -55,6 +58,7 @@ class User extends Authenticatable
 
         if($this->save()) {
             $token = str_random(30);
+            $completed_registration = true;
             DB::table('user_registration')->insert([
                         'user_id' => $user_id,
                         'token' => $token,
@@ -66,21 +70,11 @@ class User extends Authenticatable
             $wallet->create($wallet_id, $user_id);
 
             $email = $this->email;
-            $subject = "Prosimy o zweryfikowanie adresu email.";
             $user_name = $this->first_name ." ". $this->last_name;
 
-            Mail::send('index.sessions.registration', [
-                    'user_name' => $user_name, 
-                    'token' => $token
-                ], function($mail) use ($email, $user_name, $subject) {
-                    $mail->from("no-replay@zlec.to", "zlec.to");
-                    $mail->to($email, $user_name);
-                    $mail->subject($subject);
-                }); 
-
-            $completed_registration = true; 
+            Mail::to($email, $user_name)->send(new RegisterLink()); 
         }
 
-        return completed_registration;
+        return $completed_registration;
     }
 }

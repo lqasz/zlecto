@@ -342,10 +342,6 @@ Route::group(['middleware' => 'guest'], function () {
         'as' => 'register.new_user', 'uses' => 'AuthController@getRegister'
     ]);
 
-    Route::post('/register/new-user', [
-        'as' => 'register.new_user.post', 'uses' => 'AuthController@postRegisterNewUser'
-    ]);
-
     Route::get('forgot-password', [
         'as' => 'forgot-password.index', 'uses' => 'ForgotPasswordController@getEmail'
     ]);

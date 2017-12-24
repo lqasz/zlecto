@@ -42,10 +42,11 @@ class AuthController extends Controller
         $user = new User();
         if ($user->register($request)) {
             flash()->success('Mail wysłany');
-            return view('index.sessions.registration-notifi');
+        } else {
+            flash()->error('Mail nie wysłany');
         }
 
-        return redirect()->to('/');
+        return redirect()->route('home');
     }
 
     public function getRegister($token)
