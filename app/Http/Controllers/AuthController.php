@@ -60,6 +60,7 @@ class AuthController extends Controller
         Auth::login($user, true);
 
         flash()->success('Zalogowano');
+        DB::table('user_registration')->where('user_id', $user_id)->delete();
         return redirect()->route('home');
     }
 
