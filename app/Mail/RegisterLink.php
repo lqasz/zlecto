@@ -11,14 +11,17 @@ class RegisterLink extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $first_name, $token;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($first_name, $token)
     {
-        //
+        $this->token = $token;
+        $this->first_name = $first_name;
     }
 
     /**
@@ -29,6 +32,9 @@ class RegisterLink extends Mailable
     public function build()
     {
         return $this->markdown('index.sessions.partials.regiser-link')->from("no-replay@zlec.to", "zlec.to")
-            ->subject("Prosimy o zweryfikowanie adresu email.");
+            ->subject("Prosimy o zweryfikowanie adresu email.")->with([
+                        'first_name' => $this->first_name,
+                        'token' => $this->token,
+                    ]);
     }
 }

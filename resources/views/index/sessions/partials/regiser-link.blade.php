@@ -1,12 +1,11 @@
 @component('mail::message')
-# Introduction
 
-The body of your message.
+{{ $first_name }},
 
-@component('mail::button', ['url' => 'http://10.40.10.10/register'])
-Button Text
+@component('mail::button', ['url' => 'http://10.40.10.10/register/'.{{$token}}])
+Zarejestruj
 @endcomponent
 
-Thanks,<br>
+Dziękujemy,<br>
 {{ config('app.name') }}
 @endcomponent

@@ -72,7 +72,7 @@ class User extends Authenticatable
             $email = $this->email;
             $user_name = $this->first_name ." ". $this->last_name;
 
-            Mail::to($email, $user_name)->send(new RegisterLink()); 
+            Mail::to($email, $user_name)->send(new RegisterLink($this->first_name, $token)); 
         }
 
         return $completed_registration;
