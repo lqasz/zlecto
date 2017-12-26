@@ -92,14 +92,14 @@ var FormWizard = function () {
                   required: "To pole jest wymagane!",
                   equalTo: "Hasła nie są identyczne!"
               },
-              adres: {
-                required: "To pole jest wymagane!",
-                adresValid: "To pole jest wymagane!"
-              },
+              // adres: {
+              //   required: "To pole jest wymagane!",
+              //   adresValid: "To pole jest wymagane!"
+              // },
               city: {
                   required: "To pole jest wymagane!",
                   minlength: "Nazwa misata powinna się składać prznajmiej z 2 znaków!",
-                  firstUpOnPart: "Nazwa m musi zaczynać się z dużej litery!",
+                  firstUpOnPart: "Nazwa musi zaczynać się z dużej litery!",
                   restDownPart: "Duża litera dozwolona jest tylko na początku nazwiska lub każdej jego części!",
                   letterOnlyOnPart: "Imię musi zawierać same litery!"
               },
