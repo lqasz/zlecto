@@ -42,10 +42,10 @@ var FormWizard = function () {
                     equalTo: "#password",
 
                 },
-                adres: {
-                  required: true,
-                  adresValid: true
-                },
+                // adres: {
+                //   required: true,
+                //   adresValid: true
+                // },
                 city: {
                   required: true,
                   minlength: 2,
