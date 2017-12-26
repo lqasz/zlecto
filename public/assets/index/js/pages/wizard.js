@@ -180,10 +180,12 @@ var FormWizard = function () {
                 var data = {},
                     fieldsArray = form.serializeArray();
 
+                // zebranie wszystkiego do tablicy
                 for(var i = 0; i < fieldsArray.length; i++) {
                     data[fieldsArray[i].name] = fieldsArray[i].value;
                 }
 
+                // wysyłanie danych rejestracji
                 axios.post("/v1/new-user", {
                     _token: data._token,
                     first_name: data.first_name,

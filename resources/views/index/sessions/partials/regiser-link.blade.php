@@ -1,15 +1,3 @@
-<!-- @component('mail::message', ['firt_name' => $first_name, 'token' => $token])
-
-{{$first_name}},
-
-@component('mail::button', ['url' => ])
-Zarejestruj
-@endcomponent
-
-Dziękujemy,<br>
-{{ config('app.name') }}
-@endcomponent -->
-
 <div>
 	{{$first_name}}
 
