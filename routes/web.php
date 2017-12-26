@@ -335,7 +335,7 @@ Route::group(['middleware' => 'guest'], function () {
     ]);
 
     Route::group(['prefix' => 'v1'], function() {
-        Route::post('register', 'AuthController@postRegister');
+        Route::post('new-user', 'AuthController@postRegister');
     });
 
     Route::get('register/{token}', [

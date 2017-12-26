@@ -184,7 +184,7 @@ var FormWizard = function () {
                     data[fieldsArray[i].name] = fieldsArray[i].value;
                 }
 
-                axios.post("v1/register", {
+                axios.post("/v1/new-user", {
                     _token: data._token,
                     first_name: data.first_name,
                     last_name: data.last_name,
