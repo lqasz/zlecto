@@ -1,7 +1,7 @@
 <div class="main-content">
   <div class="card">
     <div class="card-header">
-      <h6>Rejesrtacja</h6>
+      <h6>Rejestracja</h6>
     </div>
     <div class="card-block">
       <div class="content">
