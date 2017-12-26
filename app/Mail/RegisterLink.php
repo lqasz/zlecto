@@ -11,7 +11,7 @@ class RegisterLink extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $first_name, $token;
+    private $first_name, $token;
 
     /**
      * Create a new message instance.
@@ -33,6 +33,9 @@ class RegisterLink extends Mailable
     {
         return $this->view('index.sessions.partials.regiser-link')
             ->from("no-replay@zlec.to", "zlec.to")
-            ->subject("Prosimy o zweryfikowanie adresu email.");
+            ->subject("Prosimy o zweryfikowanie adresu email.")->with([
+                'first_name' => $this->first_name,
+                'token' => $this->token,
+            ]);
     }
 }
