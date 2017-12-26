@@ -4,7 +4,7 @@ Witaj {{$first_name}},
 
 Aby aktywować swoje konto na <a href="http://10.40.10.10">zlec.to</a>, kliknij:
 
-@component('mail::button', ['url' => 'http://10.40.10.10/register/{{$token}}'])
+@component('mail::button', ['url' => $url])
 Zarejestruj się!
 @endcomponent
 

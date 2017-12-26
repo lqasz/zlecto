@@ -87,7 +87,7 @@ var FormWizard = function () {
               },
               password: {
                   minlength: "Hasło powinno się składać przynajmiej z 8 znaków!",
-                  passwordFormat: "Hsało musi składać się z dużych i małych liter, cyfr i przynajmniej jednego z wymienionych znaków specjalnych: \"!\",\"@\",\"#\",\"$\",\"%\"",
+                  passwordFormat: "Hasło musi składać się z dużych i małych liter, cyfr i przynajmniej jednego z wymienionych znaków specjalnych: \"!\",\"@\",\"#\",\"$\",\"%\"",
                   required: "To pole jest wymagane!"
               },
               password_confirmation: {
@@ -197,7 +197,8 @@ var FormWizard = function () {
                   }).then(function (response) {
                       console.log(response);
                   }).catch(function (error) {
-                      console.error(error);
+                      let status = error.response.status,
+                          message = error.response.data.errors;
                   });
             }
         });
