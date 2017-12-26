@@ -18,7 +18,7 @@ var FormWizard = function () {
                 last_name: {
                     required: true,
                     minlength: 2,
-                    firstUpOnPart: true,
+                    letterOnlyOnPart: true,
                     firstUpOnPart: true,
                     restDownOnPart: true
                 },
@@ -42,10 +42,12 @@ var FormWizard = function () {
                     equalTo: "#password",
 
                 },
-                // adres: {
-                //   required: true,
-                //   adresValid: true
-                // },
+                street: {
+                   required: true,
+                   streetValidFirst: true,
+                   minlength: 4,
+                   streetValid: true
+                },
                 city: {
                   required: true,
                   minlength: 2,
@@ -69,9 +71,9 @@ var FormWizard = function () {
               last_name: {
                   required: "To pole jest wymagane!",
                   minlength: "Nazwisko powinno się składać prznajmiej z 2 znaków!",
+                  letterOnlyOnPart: "Nazwisko musi zawierać same litery!",
                   firstUpOnPart: "Nazwisko musi zaczynać się z dużej litery!",
-                  restDownSurname: "Duża litera dozwolona jest tylko na początku nazwiska lub każdej jego części!",
-                  letterOnlySurname: "Imię musi zawierać same litery!"
+                  restDownOnPart: "Duża litera dozwolona jest tylko na początku nazwiska lub każdej jego części!"
               },
               phone_number: {
                   required: "To pole jest wymagane!",
@@ -92,10 +94,12 @@ var FormWizard = function () {
                   required: "To pole jest wymagane!",
                   equalTo: "Hasła nie są identyczne!"
               },
-              // adres: {
-              //   required: "To pole jest wymagane!",
-              //   adresValid: "To pole jest wymagane!"
-              // },
+              street: {
+                 required: "To pole jest wymagane!",
+                 minlength: "Ulica i numer musi zawierć co najmniej 4 znaki!",
+                 streetValidFirst: "Nazwa ulicy musi zaczynać sie od dużej litery lub cyfry",
+                 streetValid: "To pole może zawierać tylko litery cyfry znaki spacji i znaki specialne: \"-\", \"/\""
+              },
               city: {
                   required: "To pole jest wymagane!",
                   minlength: "Nazwa misata powinna się składać prznajmiej z 2 znaków!",
@@ -107,7 +111,6 @@ var FormWizard = function () {
                   required: "To pole jest wymagane!",
                   postValid: "Błędny format kodu pocztowego"
               },
-
             }
         });
 
@@ -147,8 +150,12 @@ var FormWizard = function () {
           return this.optional(element) || /^(?=.*[!@#$%])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[0-9a-zA-Z\!\@\#\$\%]{1,}$/.test(value);
         });
 
-        jQuery.validator.addMethod("adresValid",function(value, element) {
-          return this.optional(element) || /^[A-Z0-9\- \/]$/i.test(value);
+        jQuery.validator.addMethod("streetValidFirst",function(value, element) {
+          return this.optional(element) || /^[A-Z0-9]{1}.{1,}$/.test(value);
+        });
+
+        jQuery.validator.addMethod("streetValid",function(value, element) {
+          return this.optional(element) || /^[A-Z0-9-/ ]{4,}$/i.test(value);
         });
 
         jQuery.validator.addMethod("postValid",function(value, element) {

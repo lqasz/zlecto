@@ -67,14 +67,14 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label>Adres</label>
-                  <textarea class="form-control" rows="3" name="adres" tabindex="9"></textarea>
+                  <label>Ulica i numer</label>
+                  <input tye="text" class="form-control" name="street" tabindex="9" placeholder="Słoneczna 1"></textarea>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="form-group">
                   <label>Miasto lub miejscowość</label>
-                  <input type="text" class="form-control" name="city" tabindex="8">
+                  <input type="text" class="form-control" name="city" tabindex="8" placeholder="Placuszkowo">
                 </div>
                 <div class="form-group">
                   <label>Kod pocztowy</label>
