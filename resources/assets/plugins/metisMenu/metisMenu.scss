@@ -32,10 +32,10 @@
  * http://fortawesome.github.io/Font-Awesome/
 */
 
-.metismenu .icon-fa.arrow:before {
+.metismenu .fa.arrow:before {
     content: "\f104";
 }
-.metismenu .active > a > .icon-fa.arrow:before {
+.metismenu .active > a > .fa.arrow:before {
     content: "\f107";
 }
 
@@ -56,10 +56,10 @@
 *[dir="rtl"] .metismenu .plus-times {
     float: left;
 }
-.metismenu .icon-fa.plus-times:before {
+.metismenu .fa.plus-times:before {
     content: "\f067";
 }
-.metismenu .active > a > .icon-fa.plus-times {
+.metismenu .active > a > .fa.plus-times {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
@@ -71,10 +71,10 @@
 *[dir="rtl"] .metismenu .plus-minus {
     float: left;
 }
-.metismenu .icon-fa.plus-minus:before {
+.metismenu .fa.plus-minus:before {
     content: "\f067";
 }
-.metismenu .active > a > .icon-fa.plus-minus:before {
+.metismenu .active > a > .fa.plus-minus:before {
     content: "\f068";
 }
 .metismenu .collapse {

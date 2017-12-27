@@ -164,23 +164,16 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
-         */
-        
-        //
-
-        /*
          * Application Service Providers...
          */
         Laraspace\Providers\AppServiceProvider::class,
         Laraspace\Providers\AuthServiceProvider::class,
-        // Laraspace\Providers\BroadcastServiceProvider::class,
+//        Laraspace\Providers\BroadcastServiceProvider::class,
         Laraspace\Providers\EventServiceProvider::class,
         Laraspace\Providers\RouteServiceProvider::class,
-
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
     ],
 
     /*
@@ -229,7 +222,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Flash' => Laracasts\Flash\Flash::class,
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class
     ],
 
 ];

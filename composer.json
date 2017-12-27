@@ -11,9 +11,8 @@
         "php": ">=7.0.0",
         "laravel/framework": "5.5.*",
         "laracasts/flash": "^2.0",
-        "laravel/socialite": "^2.0",
         "fideloper/proxy": "~3.3",
-        "webpatser/laravel-uuid": "^3.0"
+        "tymon/jwt-auth": "0.5.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
