@@ -91,7 +91,7 @@ var FormWizard = function () {
               },
               password: {
                   minlength: "Hasło powinno się składać przynajmiej z 8 znaków!",
-                  passwordFormat: "Hsało musi składać się z dużych i małych liter, cyfr i przynajmniej jednego z wymienionych znaków specjalnych: \"!\",\"@\",\"#\",\"$\",\"%\"",
+                  passwordFormat: "Hasło musi składać się z dużych i małych liter, cyfr i przynajmniej jednego z wymienionych znaków specjalnych: \"!\",\"@\",\"#\",\"$\",\"%\"",
                   required: "To pole jest wymagane!"
               },
               password_confirmation: {
@@ -188,9 +188,15 @@ var FormWizard = function () {
                 var data = {},
                     fieldsArray = form.serializeArray();
 
+                // zebranie wszystkiego do tablicy
                 for(var i = 0; i < fieldsArray.length; i++) {
                     data[fieldsArray[i].name] = fieldsArray[i].value;
                 }
+<<<<<<< HEAD
+=======
+
+                // wysyłanie danych rejestracji
+>>>>>>> d76835fd9322105477ab420fdaf646c98e59fa22
                 axios.post("/v1/new-user", {
                     _token: data._token,
                     first_name: data.first_name,
@@ -202,6 +208,7 @@ var FormWizard = function () {
                   }).then(function (response) {
                       console.log(response);
                   }).catch(function (error) {
+<<<<<<< HEAD
                     let status = error.response.status,
                     message = error.response.data.errors;
                     if(status === 422) {
@@ -210,6 +217,10 @@ var FormWizard = function () {
                       return form.valid();
                     }
                     console.log(message);
+=======
+                      let status = error.response.status,
+                          message = error.response.data.errors;
+>>>>>>> d76835fd9322105477ab420fdaf646c98e59fa22
                   });
             }
         });

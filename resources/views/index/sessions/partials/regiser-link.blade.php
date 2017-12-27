@@ -1,17 +1,12 @@
-<!-- @component('mail::message', ['firt_name' => $first_name, 'token' => $token])
+@component('mail::message')
+Witaj {{$first_name}},
+	<br/><br/>
 
-{{$first_name}},
+Aby aktywować swoje konto na <a href="http://10.40.10.10">zlec.to</a>, kliknij:
 
-@component('mail::button', ['url' => ])
-Zarejestruj
+@component('mail::button', ['url' => $url])
+Zarejestruj się!
 @endcomponent
 
-Dziękujemy,<br>
-{{ config('app.name') }}
-@endcomponent -->
-
-<div>
-	{{$first_name}}
-
-	<a href="http://10.40.10.10/register/'.{{$token}}" >Zarejestruj się!</a>
-</div>
+Zespół,{{ config('app.name') }}
+@endcomponent
