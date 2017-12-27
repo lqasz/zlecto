@@ -2,8 +2,10 @@ var FormWizard = function () {
 
     var handleBasicWizardFour = function(){
         var form = $("#basic-wizard-4");
+        var lastEmail = "";
 
         form.validate({
+
             errorPlacement: function errorPlacement(error, element) {
                 element.after(error);
             },
@@ -30,7 +32,8 @@ var FormWizard = function () {
                 },
                 email: {
                     required: true,
-                    emailFormat: true
+                    emailFormat: true,
+                    emailExist: true
                 },
                 password: {
                     required: true,
@@ -83,7 +86,8 @@ var FormWizard = function () {
               },
               email: {
                   required: "To pole jest wymagane!",
-                  emailFormat: "Błędny format e-mail!"
+                  emailFormat: "Błędny format e-mail!",
+                  emailExist: "Na podany adres e-mail zostało już założone konto!"
               },
               password: {
                   minlength: "Hasło powinno się składać przynajmiej z 8 znaków!",
@@ -151,15 +155,19 @@ var FormWizard = function () {
         });
 
         jQuery.validator.addMethod("streetValidFirst",function(value, element) {
-          return this.optional(element) || /^[A-Z0-9]{1}.{1,}$/.test(value);
+          return this.optional(element) || /^[A-ZĘÓĄŚŁŻŹĆŃ0-9]{1}.{1,}$/.test(value);
         });
 
         jQuery.validator.addMethod("streetValid",function(value, element) {
-          return this.optional(element) || /^[A-Z0-9-/ ]{4,}$/i.test(value);
+          return this.optional(element) || /^[A-Za-zĘęÓóĄąŚśŁłŻżŹźĆćŃń0-9-\/ ]{4,}$/.test(value);
         });
 
         jQuery.validator.addMethod("postValid",function(value, element) {
           return this.optional(element) || /^[0-9]{2}-[0-9]{3}$/.test(value);
+        });
+
+        jQuery.validator.addMethod("emailExist",function(value, element) {
+          return this.optional(element) || lastEmail !== value;
         });
 
         form.steps({
@@ -183,7 +191,6 @@ var FormWizard = function () {
                 for(var i = 0; i < fieldsArray.length; i++) {
                     data[fieldsArray[i].name] = fieldsArray[i].value;
                 }
-
                 axios.post("/v1/new-user", {
                     _token: data._token,
                     first_name: data.first_name,
@@ -195,7 +202,14 @@ var FormWizard = function () {
                   }).then(function (response) {
                       console.log(response);
                   }).catch(function (error) {
-                      console.error(error);
+                    let status = error.response.status,
+                    message = error.response.data.errors;
+                    if(status === 422) {
+                      lastEmail = fieldsArray[4].value;
+                      form.steps("setStep", 0);
+                      return form.valid();
+                    }
+                    console.log(message);
                   });
             }
         });

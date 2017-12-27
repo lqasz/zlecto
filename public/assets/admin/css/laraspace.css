@@ -34076,6 +34076,7 @@ code,
   .layout-default .main-content,
   .layout-icon-sidebar .main-content {
     padding-left: 15px;
+    padding-right: 15px;
   }
 
   .site-footer {
