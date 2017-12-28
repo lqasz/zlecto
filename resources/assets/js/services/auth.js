@@ -3,7 +3,6 @@ import Ls from './ls'
 export default {
 
     login(loginData){
-
         return axios.post('/api/auth/login', loginData).then(response =>  {
             Ls.set('auth.token',response.data.token)
             toastr['success']('Logged In!', 'Success');
@@ -15,7 +14,6 @@ export default {
                 console.log('Error', error.message);
             }
         });
-
     },
 
     logout(){
@@ -35,4 +33,17 @@ export default {
         });
     },
 
+    register(registerData) {
+        return axios.post('/api/auth/register', registerData).then(response =>  {
+            // Ls.set('auth.token',response.data.token)
+            toastr['success']('Logged In!', 'Success');
+        }).catch(error => {
+            if (error.response.status == 422) {
+                toastr['error']('User exists in DataBase', 'Error');
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                console.log('Error', error.message);
+            }
+        });
+    },
 }

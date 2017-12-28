@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Laraspace\User;
+use Webpatser\Uuid\Uuid;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,24 +14,16 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
+            'id' => Uuid::generate()->string,
+            'location_id' => Uuid::generate()->string,
+            'wallet_id' => Uuid::generate()->string,
+            'avatar_id' => Uuid::generate()->string,
             'email' => 'admin@laraspace.in',
-            'name' => 'Jane Doe',
-            'role' => 'admin',
+            'first_name' => 'Jan',
+            'last_name' => 'Kowalski',
+            'phone_number' => '676 837 332',
+            'status' => 'active',
             'password' => bcrypt('admin@123')
-        ]);
-
-        User::create([
-            'email' => 'shane@laraspace.in',
-            'name' => 'Shane White',
-            'role' => 'user',
-            'password' => bcrypt('hank@123')
-        ]);
-
-        User::create([
-            'email' => 'adam@laraspace.in',
-            'name' => 'Adam David',
-            'role' => 'user',
-            'password' => bcrypt('jesse@123')
         ]);
     }
 }

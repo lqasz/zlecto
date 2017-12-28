@@ -2,115 +2,100 @@
 
 namespace Laraspace\Http\Controllers;
 
-use Auth;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 use Laraspace\Http\Requests;
+use Webpatser\Uuid\Uuid;
+use Illuminate\Mail\Message;
+use DB, Hash, Mail;
+use Laraspace\Wallet;
 use Laraspace\User;
-use Socialite, DB;
+use Laraspace\Mail\RegisterLink;
 
 class AuthController extends Controller
 {
-    public function login()
+    public function authenticate(Requests\LoginRequest $request)
     {
-        return view('admin.sessions.login');
-    }
+        // grab credentials from the request
+        $credentials = $request->only('email', 'password');
 
-    public function postLogin(Requests\LoginRequest $request)
-    {
-        if(User::login($request)) {
-            flash()->success('Welcome to Laraspace.');
-            return redirect()->to('/');
+        try {
+            // attempt to verify the credentials and create a token for the user
+            if (! $token = JWTAuth::attempt($credentials)) {
+                return response()->json(['error' => 'invalid_credentials'], 401);
+            }
+        } catch (JWTException $e) {
+            // something went wrong whilst attempting to encode the token
+            return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
-        flash()->error('Invalid Login Credentials');
-        return redirect()->back();
+        // all good so return the token
+        return response()->json(compact('token'));
     }
 
-    public function logOut()
+    public function check()
     {
-        Auth::logout();
 
-        return redirect()->to('/login');
+        try {
+            JWTAuth::parseToken()->authenticate();
+        } catch (JWTException $e) {
+            return response(['authenticated' => false]);
+        }
+
+        return response(['authenticated' => true]);
     }
 
-    public function register()
+    public function logout()
     {
-        return view('index.sessions.register-2');
+
+        try {
+            $token = JWTAuth::getToken();
+
+            if ($token) {
+                JWTAuth::invalidate($token);
+            }
+
+        } catch (JWTException $e) {
+            return response()->json($e->getMessage(), 401);
+        }
+
+        return response()->json(['message' => 'Log out success'], 200);
     }
 
-    public function postRegister(Requests\RegistrationRequest $request)
+    public function register(Requests\RegistrationRequest $request)
     {
+        $user_id = Uuid::generate()->string;
+        $wallet_id = Uuid::generate()->string;
+
         $user = new User();
-        if ($user->register($request)) {
-            flash()->success('Mail wysłany');
-        } else {
-            flash()->error('Mail nie wysłany');
+        $user->id = $user_id;
+        $user->wallet_id = $wallet_id;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->phone_number = $request->phone_number;
+        $user->password = bcrypt($request->password);
+
+        if($user->save()) {
+            $token = str_random(30);
+            DB::table('user_registration')->insert([
+                        'user_id' => $user_id,
+                        'token' => $token,
+                        'created_at' => date('Y-m-d H:i:s'),
+                        'updated_at' => date('Y-m-d H:i:s'),
+                    ]);
+
+            $wallet = new Wallet();
+            $wallet->create($wallet_id, $user_id);
+
+            $email = $user->email;
+            $user_name = $user->first_name ." ". $user->last_name;
+
+            Mail::to($email, $user_name)->send(new RegisterLink($user->first_name, $token)); 
+
+            return response()->json(['message' => 'Registered'], 200);
         }
 
-        return redirect()->route('home');
-    }
-
-    public function getRegister($token)
-    {
-        $user_id = DB::table('user_registration')->where('token', $token)->value('user_id');
-
-        $user = User::where('id', $user_id)->first();
-        $user->status = 'active';
-        $user->save();
-
-        Auth::login($user, true);
-
-        flash()->success('Zalogowano');
-        DB::table('user_registration')->where('user_id', $user_id)->delete();
-        return redirect()->route('home');
-    }
-
-    /**
-     * Redirect the user to the authentication page.
-     *
-     * @return Response
-     */
-    public function redirectToProvider($provider)
-    {
-        return Socialite::driver($provider)->redirect();
-    }
-
-    /**
-     * Obtain the user information from GitHub.
-     *
-     * @return Response
-     */
-    public function handleProviderCallback($provider)
-    {
-        $provider_user = Socialite::driver($provider)->user();
-
-        $user = $this->findUserByProviderOrCreate($provider, $provider_user);
-
-        auth()->login($user);
-
-        flash()->success('Welcome to Laraspace.');
-
-        return redirect()->to('/admin');
-    }
-
-    private function findUserByProviderOrCreate($provider, $provider_user)
-    {
-        $user = User::where($provider . '_id', $provider_user->token)
-            ->orWhere('email', $provider_user->email)
-            ->first();
-
-
-        if (!$user) {
-            $user = User::create([
-                'name' => $provider_user->name,
-                'email' => $provider_user->email,
-                $provider . '_id' => $provider_user->token
-            ]);
-        } else {
-            // Update the token on each login request
-            $user[$provider . '_id'] = $provider_user->token;
-            $user->save();
-        }
-
-        return $user;
+        return response()->json(['message' => 'Couldn`t registered'], 500);
     }
 }
