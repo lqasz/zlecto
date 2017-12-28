@@ -32,7 +32,7 @@ class RegisterLink extends Mailable
      */
     public function build()
     {
-        return $this->markdown('index.sessions.partials.regiser-link')->with([
+        return $this->markdown('partials.regiser-link')->with([
                 'first_name' => $this->first_name,
             ])->subject("Prosimy o zweryfikowanie adresu email.");
     }
