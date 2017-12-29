@@ -19,5 +19,6 @@ Route::group(['prefix' => 'auth'], function () {
     Route::get('logout','AuthController@logout');
     Route::get('check','AuthController@check');
     Route::post('register','AuthController@register');
+    Route::get('register-user/{token}', 'AuthController@registerUser');
 });
 

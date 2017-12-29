@@ -4670,7 +4670,7 @@ module.exports = {
 
 
 var bind = __webpack_require__(146);
-var isBuffer = __webpack_require__(305);
+var isBuffer = __webpack_require__(307);
 
 /*global toString:true*/
 
@@ -6373,7 +6373,7 @@ module.exports = Component.exports
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(4);
-var normalizeHeaderName = __webpack_require__(307);
+var normalizeHeaderName = __webpack_require__(309);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -32062,7 +32062,7 @@ module.exports = Component.exports
 /* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(304);
+module.exports = __webpack_require__(306);
 
 /***/ }),
 /* 146 */
@@ -32090,12 +32090,12 @@ module.exports = function bind(fn, thisArg) {
 
 
 var utils = __webpack_require__(4);
-var settle = __webpack_require__(308);
-var buildURL = __webpack_require__(310);
-var parseHeaders = __webpack_require__(311);
-var isURLSameOrigin = __webpack_require__(312);
+var settle = __webpack_require__(310);
+var buildURL = __webpack_require__(312);
+var parseHeaders = __webpack_require__(313);
+var isURLSameOrigin = __webpack_require__(314);
 var createError = __webpack_require__(148);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(313);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(315);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -32192,7 +32192,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(314);
+      var cookies = __webpack_require__(316);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -32276,7 +32276,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(309);
+var enhanceError = __webpack_require__(311);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -32337,7 +32337,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(152);
-module.exports = __webpack_require__(324);
+module.exports = __webpack_require__(326);
 
 
 /***/ }),
@@ -32348,7 +32348,7 @@ module.exports = __webpack_require__(324);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__router_js__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helpers_layout__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers_plugin__ = __webpack_require__(323);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers_plugin__ = __webpack_require__(325);
 
 
 
@@ -32359,7 +32359,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(302);
+__webpack_require__(304);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32438,10 +32438,12 @@ var app = new Vue({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__views_auth_Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_26__views_auth_Login_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__views_auth_Register_vue__ = __webpack_require__(294);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__views_auth_Register_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_27__views_auth_Register_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__views_errors_404_vue__ = __webpack_require__(297);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__views_errors_404_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_28__views_errors_404_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__views_front_Home_vue__ = __webpack_require__(300);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__views_front_Home_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_29__views_front_Home_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__views_auth_RegistrationLink_vue__ = __webpack_require__(297);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__views_auth_RegistrationLink_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_28__views_auth_RegistrationLink_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__views_errors_404_vue__ = __webpack_require__(299);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__views_errors_404_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_29__views_errors_404_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__views_front_Home_vue__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__views_front_Home_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_30__views_front_Home_vue__);
 
 
 
@@ -32500,6 +32502,7 @@ var app = new Vue({
 
 
 
+
 /*
  |--------------------------------------------------------------------------
  | Frontend Views
@@ -32548,7 +32551,7 @@ var routes = [
     path: '/', component: __WEBPACK_IMPORTED_MODULE_10__views_layouts_LayoutFront_vue___default.a,
     children: [{
         path: '/',
-        component: __WEBPACK_IMPORTED_MODULE_29__views_front_Home_vue___default.a,
+        component: __WEBPACK_IMPORTED_MODULE_30__views_front_Home_vue___default.a,
         name: 'home'
     }]
 },
@@ -32650,11 +32653,15 @@ var routes = [
         path: 'register',
         component: __WEBPACK_IMPORTED_MODULE_27__views_auth_Register_vue___default.a,
         name: 'register'
+    }, {
+        path: 'register-user/:token',
+        component: __WEBPACK_IMPORTED_MODULE_28__views_auth_RegistrationLink_vue___default.a,
+        name: 'registerLink'
     }]
 },
 
 // DEFAULT ROUTE
-{ path: '*', component: __WEBPACK_IMPORTED_MODULE_28__views_errors_404_vue___default.a }];
+{ path: '*', component: __WEBPACK_IMPORTED_MODULE_29__views_errors_404_vue___default.a }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     routes: routes,
@@ -57124,9 +57131,70 @@ if (false) {
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(298),
+  __webpack_require__(330),
   /* template */
-  __webpack_require__(299),
+  __webpack_require__(298),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "C:\\laragon\\www\\zlecto\\resources\\assets\\js\\views\\auth\\RegistrationLink.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] RegistrationLink.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1cdd3f3f", Component.options)
+  } else {
+    hotAPI.reload("data-v-1cdd3f3f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 298 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-content"
+  }, [_vm._v("\n    " + _vm._s(_vm.message) + " "), _c('br'), _c('a', {
+    attrs: {
+      "href": "/"
+    }
+  }, [_vm._v("Powrót do strony głównej!")])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1cdd3f3f", module.exports)
+  }
+}
+
+/***/ }),
+/* 299 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(300),
+  /* template */
+  __webpack_require__(301),
   /* styles */
   null,
   /* scopeId */
@@ -57158,7 +57226,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 298 */
+/* 300 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57192,7 +57260,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 299 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -57220,7 +57288,7 @@ if (false) {
 }
 
 /***/ }),
-/* 300 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -57228,7 +57296,7 @@ var Component = __webpack_require__(1)(
   /* script */
   null,
   /* template */
-  __webpack_require__(301),
+  __webpack_require__(303),
   /* styles */
   null,
   /* scopeId */
@@ -57260,7 +57328,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 301 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -57283,13 +57351,13 @@ if (false) {
 }
 
 /***/ }),
-/* 302 */
+/* 304 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(303);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(305);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_ls__ = __webpack_require__(24);
@@ -57298,7 +57366,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-window._ = __webpack_require__(322);
+window._ = __webpack_require__(324);
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -57357,7 +57425,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vee_validate__["a" /* default */]);
 
 /***/ }),
-/* 303 */
+/* 305 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64347,7 +64415,7 @@ var index_esm = {
 
 
 /***/ }),
-/* 304 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64355,7 +64423,7 @@ var index_esm = {
 
 var utils = __webpack_require__(4);
 var bind = __webpack_require__(146);
-var Axios = __webpack_require__(306);
+var Axios = __webpack_require__(308);
 var defaults = __webpack_require__(20);
 
 /**
@@ -64390,14 +64458,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(150);
-axios.CancelToken = __webpack_require__(320);
+axios.CancelToken = __webpack_require__(322);
 axios.isCancel = __webpack_require__(149);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(321);
+axios.spread = __webpack_require__(323);
 
 module.exports = axios;
 
@@ -64406,7 +64474,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 305 */
+/* 307 */
 /***/ (function(module, exports) {
 
 /*!
@@ -64433,7 +64501,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 306 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64441,10 +64509,10 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(20);
 var utils = __webpack_require__(4);
-var InterceptorManager = __webpack_require__(315);
-var dispatchRequest = __webpack_require__(316);
-var isAbsoluteURL = __webpack_require__(318);
-var combineURLs = __webpack_require__(319);
+var InterceptorManager = __webpack_require__(317);
+var dispatchRequest = __webpack_require__(318);
+var isAbsoluteURL = __webpack_require__(320);
+var combineURLs = __webpack_require__(321);
 
 /**
  * Create a new instance of Axios
@@ -64526,7 +64594,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 307 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64545,7 +64613,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 308 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64578,7 +64646,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 309 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64606,7 +64674,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 310 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64681,7 +64749,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 311 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64725,7 +64793,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 312 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64800,7 +64868,7 @@ module.exports = (
 
 
 /***/ }),
-/* 313 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64843,7 +64911,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 314 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64903,7 +64971,7 @@ module.exports = (
 
 
 /***/ }),
-/* 315 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64962,14 +65030,14 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 316 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(4);
-var transformData = __webpack_require__(317);
+var transformData = __webpack_require__(319);
 var isCancel = __webpack_require__(149);
 var defaults = __webpack_require__(20);
 
@@ -65048,7 +65116,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 317 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65075,7 +65143,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 318 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65096,7 +65164,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 319 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65117,7 +65185,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 320 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65181,7 +65249,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 321 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65215,7 +65283,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 322 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -82307,7 +82375,7 @@ module.exports = function spread(callback) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17), __webpack_require__(28)(module)))
 
 /***/ }),
-/* 323 */
+/* 325 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82405,10 +82473,46 @@ module.exports = function spread(callback) {
 });
 
 /***/ }),
-/* 324 */
+/* 326 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            message: {}
+        };
+    },
+
+
+    mounted: function mounted() {
+        var self = this;
+        var token = this.$route.params.token;
+
+        axios.get('/api/auth/register-user/' + token).then(function (response) {
+            self.message = response.data.message;
+        }).catch(function (error) {
+            console.log('Error', error.message);
+        });
+    }
+});
 
 /***/ })
 /******/ ]);

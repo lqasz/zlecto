@@ -8,5 +8,5 @@ Aby aktywować swoje konto na <a href="http://10.40.10.10">zlec.to</a>, kliknij:
 Zarejestruj się!
 @endcomponent
 
-Zespół,{{ config('app.name') }}
+Zespół, {{ config('app.name') }}
 @endcomponent

@@ -53,6 +53,7 @@ import Settings from './views/admin/Settings.vue'
 //Auth
 import Login from './views/auth/Login.vue'
 import Register from './views/auth/Register.vue'
+import RegistrationLink from './views/auth/RegistrationLink.vue'
 
 import NotFoundPage from './views/errors/404.vue'
 
@@ -232,6 +233,11 @@ const routes = [
                 path: 'register',
                 component: Register,
                 name: 'register'
+            },
+            {
+                path: 'register-user/:token',
+                component: RegistrationLink,
+                name: 'registerLink'
             },
         ]
     },

@@ -98,4 +98,22 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'Couldn`t registered'], 500);
     }
+
+    public function registerUser($token)
+    {
+        $message = "Nie znaleziono takiego użytkownika";
+        $user_id = DB::table('user_registration')->where('token', $token)->value('user_id');
+
+
+        if($user_id) {
+            $user = User::where('id', $user_id)->first();
+            $user->status = 'active';
+            $user->save();
+
+            DB::table('user_registration')->where('user_id', $user_id)->delete();
+            $message = "Konto zostało aktywowane!";
+        }
+
+        return response()->json(['message' => $message], 200);
+    }
 }
