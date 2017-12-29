@@ -22,7 +22,7 @@ class RegisterLink extends Mailable
     public function __construct($first_name, $token)
     {
         $this->first_name = $first_name;
-        $this->url = 'http://10.40.10.10/register/'. $token;
+        $this->url = 'http://10.40.10.10/register-user/'. $token;
     }
 
     /**

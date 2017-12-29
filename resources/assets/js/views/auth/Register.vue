@@ -35,7 +35,6 @@
             validateBeforeSubmit(e){
                 this.$validator.validateAll();
 
-                console.info('errors: ', this.errors.any());
                 if (!this.errors.any()) {
                     Auth.register(this.registerData).then(() => {
                         // this.$router.push('/login')

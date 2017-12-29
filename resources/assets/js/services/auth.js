@@ -36,7 +36,7 @@ export default {
     register(registerData) {
         return axios.post('/api/auth/register', registerData).then(response =>  {
             // Ls.set('auth.token',response.data.token)
-            toastr['success']('Logged In!', 'Success');
+            toastr['success']('Wysłano maila!', 'Success');
         }).catch(error => {
             if (error.response.status == 422) {
                 toastr['error']('User exists in DataBase', 'Error');

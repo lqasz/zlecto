@@ -1,6 +1,6 @@
 <template>
     <div class="main-content">
-        {{message}} <br/><a href="/">Powrót do strony głównej!</a>
+        {{message}} <br/><a href="/login">Zaloguj się!</a>
     </div>
 </template>
 

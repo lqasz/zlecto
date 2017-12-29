@@ -5381,7 +5381,7 @@ module.exports = {
     register: function register(registerData) {
         return axios.post('/api/auth/register', registerData).then(function (response) {
             // Ls.set('auth.token',response.data.token)
-            toastr['success']('Logged In!', 'Success');
+            toastr['success']('Wysłano maila!', 'Success');
         }).catch(function (error) {
             if (error.response.status == 422) {
                 toastr['error']('User exists in DataBase', 'Error');
@@ -56906,7 +56906,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         validateBeforeSubmit: function validateBeforeSubmit(e) {
             this.$validator.validateAll();
 
-            console.info('errors: ', this.errors.any());
             if (!this.errors.any()) {
                 __WEBPACK_IMPORTED_MODULE_0__services_auth__["a" /* default */].register(this.registerData).then(function () {
                     // this.$router.push('/login')
@@ -57173,9 +57172,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "main-content"
   }, [_vm._v("\n    " + _vm._s(_vm.message) + " "), _c('br'), _c('a', {
     attrs: {
-      "href": "/"
+      "href": "/login"
     }
-  }, [_vm._v("Powrót do strony głównej!")])])
+  }, [_vm._v("Zaloguj się!")])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
