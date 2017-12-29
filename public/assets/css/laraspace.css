@@ -13899,8 +13899,8 @@ yx-axis
 .mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerRail,
 .mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger_bar,
 .mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerRail {
-  -webkit-transition: width .2s ease-out .2s, height .2s ease-out .2s, margin-left .2s ease-out .2s, margin-right .2s ease-out .2s, margin-top .2s ease-out .2s, margin-bottom .2s ease-out .2s, opacity .2s ease-in-out, background-color .2s ease-in-out;
-  transition: width .2s ease-out .2s, height .2s ease-out .2s, margin-left .2s ease-out .2s, margin-right .2s ease-out .2s, margin-top .2s ease-out .2s, margin-bottom .2s ease-out .2s, opacity .2s ease-in-out, background-color .2s ease-in-out;
+  -webkit-transition: width .2s ease-out .2s, height .2s ease-out .2s, margin-left .2s ease-out .2s, margin-right .2s ease-out .2s, margin-top .2s ease-out .2s, margin-bottom .2s ease-out .2s, opacity .2s ease-in-out, background-color .2s ease-in-out;
+  transition: width .2s ease-out .2s, height .2s ease-out .2s, margin-left .2s ease-out .2s, margin-right .2s ease-out .2s, margin-top .2s ease-out .2s, margin-bottom .2s ease-out .2s, opacity .2s ease-in-out, background-color .2s ease-in-out;
 }
 
 /* 
@@ -24499,92 +24499,7 @@ code,
   padding-top: 100px;
 }
 
-.buttons-demo .btn {
-  margin-bottom: 10px;
-}
-
-.buttons-demo .btn-group-vertical .btn {
-  margin-bottom: 0;
-}
-
-.btn-group-vertical {
-  margin-right: 20px;
-}
-
-.source-link {
-  font-size: 0.9rem;
-  color: #bababa;
-}
-
-.skin-tools {
-  position: fixed;
-  top: 96px;
-  right: -400px;
-  z-index: 900;
-  width: 400px;
-  -webkit-transition: all .3s;
-  transition: all .3s;
-}
-
-.skin-tools .skin-tools-action {
-  position: absolute;
-  top: 1px;
-  left: -48px;
-  padding: 8px 16px;
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #fff;
-  color: #333;
-  -webkit-box-shadow: -2px 0px 2px rgba(0, 0, 0, 0.15);
-          box-shadow: -2px 0px 2px rgba(0, 0, 0, 0.15);
-  border-left: 1px solid rgba(222, 227, 231, 0.56);
-  border-bottom-left-radius: 4px;
-  border-top-left-radius: 4px;
-}
-
-.skin-tools .skin-tools-content {
-  height: 100%;
-  min-height: 100px;
-  padding: 5px 20px 20px;
-  background-color: #fff;
-  color: #333;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 0 3px 3px;
-}
-
-.skin-tools h5 {
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.skin-tools .skin-radio.active::after {
-  background-image: url("/assets/img/skins/tick.png");
-  background-size: 100% auto;
-  width: 20px;
-  height: 20px;
-  content: '';
-  position: absolute;
-  top: -6px;
-  right: 6px;
-  z-index: 10;
-}
-
-.skin-tools .skin-radio.active img {
-  opacity: 1;
-}
-
-.skin-tools .skin-radio img {
-  opacity: 0.5;
-}
-
-.skin-tools.is-open {
-  right: 0;
-}
-
-@media (max-width: 767px) {
-  .skin-tools {
-    right: -250px;
-    width: 250px;
-  }
+.form-group {
+  color: #000;
 }
 
