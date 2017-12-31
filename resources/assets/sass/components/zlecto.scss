@@ -1,3 +1,39 @@
-.form-group{
+.form-group {
   color: #000;
+}
+
+.btn-register {
+  margin-left: 0.4em;
+}
+
+.register-form {
+  height: 720px;
+  width: 1120px;
+  padding-bottom: 60px;
+}
+
+.buttons-register {
+   position: absolute;
+   bottom: 10px;
+   right: 10px;
+}
+
+.form-wraper {
+  height: 410px;
+}
+
+.login-box .form-control {
+    margin-top: 5px;
+}
+
+.form-group{
+    margin-bottom: 24px;
+}
+
+.has-danger {
+  margin-bottom: 0;
+}
+
+label{
+    margin-bottom: .2rem;
 }

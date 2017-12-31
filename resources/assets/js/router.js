@@ -68,7 +68,7 @@ import Home from './views/front/Home.vue'
 Vue.use(VueRouter)
 
 const routes = [
-    
+
     /*
      |--------------------------------------------------------------------------
      | Layout Routes for DEMO
@@ -251,7 +251,7 @@ const router = new VueRouter({
     mode: 'history',
     linkActiveClass: 'active'
 })
-
+/*
 router.beforeEach((to, from, next) => {
 
     // If the next route is requires user to be Logged IN
@@ -268,5 +268,5 @@ router.beforeEach((to, from, next) => {
 
     return next()
 });
-
+*/
 export default router

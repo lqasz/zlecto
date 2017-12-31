@@ -32668,26 +32668,24 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     mode: 'history',
     linkActiveClass: 'active'
 });
-
-router.beforeEach(function (to, from, next) {
+/*
+router.beforeEach((to, from, next) => {
 
     // If the next route is requires user to be Logged IN
-    if (to.matched.some(function (m) {
-        return m.meta.requiresAuth;
-    })) {
+    if (to.matched.some(m => m.meta.requiresAuth)){
 
-        return __WEBPACK_IMPORTED_MODULE_2__services_auth__["a" /* default */].check().then(function (authenticated) {
-            if (!authenticated) {
-                return next({ path: '/login' });
+        return AuthService.check().then(authenticated => {
+            if(!authenticated){
+                return next({ path : '/login'})
             }
 
-            return next();
-        });
+            return next()
+        })
     }
 
-    return next();
+    return next()
 });
-
+*/
 /* harmony default export */ __webpack_exports__["a"] = (router);
 
 /***/ }),
@@ -48735,7 +48733,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "login-wrapper"
   }, [_c('div', {
-    staticClass: "login-box"
+    staticClass: "login-box register-form"
   }, [_vm._m(0), _vm._v(" "), _c('router-view'), _vm._v(" "), _vm._m(1)], 1)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -56938,18 +56936,59 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            registerData: {},
+            step: 1,
+            registerData: {
+                name: null,
+                surname: null,
+                password: null,
+                email: null,
+                phone: null,
+                password_conf: null
+
+            },
             regiony: ["dolnośląskie", "kujawsko-pomorskie", "lubelskie", "lubuskie", "łódzkie", "małopolskie", "mazowieckie", "opolskie", "podkarpackie", "podlaskie", "pomorskie", "śląskie", "świętokrzyskie", "warmińsko-mazurskie", "wielkopolskie", "zachodniopomorskie"]
         };
     },
 
     methods: {
+        nextStep: function nextStep() {
+
+            this.step++;
+        },
+        piervousStep: function piervousStep() {
+            this.step--;
+        },
         validateBeforeSubmit: function validateBeforeSubmit(e) {
             this.$validator.validateAll();
 
@@ -56972,24 +57011,293 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "card-header"
   }, [_c('form', {
+    on: {
+      "submit": _vm.validateBeforeSubmit
+    }
+  }, [(_vm.step === 1) ? _c('section', {
+    staticClass: "form-wraper"
+  }, [_c('h3', [_vm._v("Krok 1")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-lg-6"
+  }, [_c('div', {
+    class: {
+      'form-group': true, 'has-danger': _vm.errors.has('name'), 'has-success': !_vm.errors.has('name') && _vm.fields.name.touched
+    }
+  }, [_c('label', [_vm._v("Imię")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model.lazy",
+      value: (_vm.registerData.name),
+      expression: "registerData.name",
+      modifiers: {
+        "lazy": true
+      }
+    }, {
+      name: "validate",
+      rawName: "v-validate",
+      value: ('required|min:3|alpha_spaces'),
+      expression: "'required|min:3|alpha_spaces'"
+    }],
+    staticClass: "form-control",
+    class: {
+      'form-control-danger': _vm.errors.has('name'), 'form-control-success': !_vm.errors.has('name')
+    },
     attrs: {
-      "id": "registerForm",
-      "method": "post"
+      "name": "name",
+      "type": "text",
+      "placeholder": "Jan"
+    },
+    domProps: {
+      "value": (_vm.registerData.name)
     },
     on: {
-      "submit": function($event) {
-        $event.preventDefault();
-        _vm.validateBeforeSubmit($event)
+      "change": function($event) {
+        _vm.$set(_vm.registerData, "name", $event.target.value)
       }
     }
-  }, [_c('h3', [_vm._v("Krok 1")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('h3', [_vm._v("Krok 2")]), _vm._v(" "), _c('section', [_c('div', {
+  }), _vm._v(" "), (_vm.errors.has('name')) ? _c('span', {
+    staticClass: "form-control-feedback"
+  }, [_vm._v(_vm._s(_vm.errors.first('name')))]) : _vm._e()]), _vm._v(" "), _c('div', {
+    class: {
+      'form-group': true, 'has-danger': _vm.errors.has('surname'), 'has-success': !_vm.errors.has('surname') && _vm.fields.surname.touched
+    }
+  }, [_c('label', [_vm._v("Nazwisko")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model.lazy",
+      value: (_vm.registerData.surname),
+      expression: "registerData.surname",
+      modifiers: {
+        "lazy": true
+      }
+    }, {
+      name: "validate",
+      rawName: "v-validate",
+      value: ('required|min:2|alpha_spaces'),
+      expression: "'required|min:2|alpha_spaces'"
+    }],
+    staticClass: "form-control",
+    class: {
+      'form-control-danger': _vm.errors.has('surname'), 'form-control-success': !_vm.errors.has('surname')
+    },
+    attrs: {
+      "name": "surname",
+      "type": "text",
+      "placeholder": "Kowalski"
+    },
+    domProps: {
+      "value": (_vm.registerData.surname)
+    },
+    on: {
+      "change": function($event) {
+        _vm.$set(_vm.registerData, "surname", $event.target.value)
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.errors.has('surname')),
+      expression: "errors.has('surname')"
+    }],
+    staticClass: "form-control-feedback"
+  }, [_vm._v(_vm._s(_vm.errors.first('surname')))])]), _vm._v(" "), _c('div', {
+    class: {
+      'form-group': true, 'has-danger': _vm.errors.has('password'), 'has-success': !_vm.errors.has('password') && _vm.fields.password.touched
+    }
+  }, [_c('label', [_vm._v("Hasło")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model.lazy",
+      value: (_vm.registerData.password),
+      expression: "registerData.password",
+      modifiers: {
+        "lazy": true
+      }
+    }, {
+      name: "validate",
+      rawName: "v-validate",
+      value: ({
+        required: true,
+        min: 8,
+        max: 16,
+        regex: /^(?=.*[!@#$%])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[0-9a-zA-Z\!\@\#\$\%]{1,}$/
+      }),
+      expression: "{ required: true, min: 8, max: 16, regex: /^(?=.*[!@#$%])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[0-9a-zA-Z\\!\\@\\#\\$\\%]{1,}$/ }"
+    }],
+    staticClass: "form-control",
+    class: {
+      'form-control-danger': _vm.errors.has('password'), 'form-control-success': !_vm.errors.has('password')
+    },
+    attrs: {
+      "name": "password",
+      "type": "password"
+    },
+    domProps: {
+      "value": (_vm.registerData.password)
+    },
+    on: {
+      "change": function($event) {
+        _vm.$set(_vm.registerData, "password", $event.target.value)
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.errors.has('password')),
+      expression: "errors.has('password')"
+    }],
+    staticClass: "form-control-feedback"
+  }, [_vm._v(_vm._s(_vm.errors.first('password')))])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-lg-6"
+  }, [_c('div', {
+    class: {
+      'form-group': true, 'has-danger': _vm.errors.has('email'), 'has-success': !_vm.errors.has('email') && _vm.fields.email.touched
+    }
+  }, [_c('label', [_vm._v("e-mail")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model.lazy",
+      value: (_vm.registerData.email),
+      expression: "registerData.email",
+      modifiers: {
+        "lazy": true
+      }
+    }, {
+      name: "validate",
+      rawName: "v-validate",
+      value: ('required|email'),
+      expression: "'required|email'"
+    }],
+    staticClass: "form-control",
+    class: {
+      'form-control-danger': _vm.errors.has('email'), 'form-control-success': !_vm.errors.has('email')
+    },
+    attrs: {
+      "name": "email",
+      "type": "text",
+      "placeholder": "jan_kowalski@gmail.com"
+    },
+    domProps: {
+      "value": (_vm.registerData.email)
+    },
+    on: {
+      "change": function($event) {
+        _vm.$set(_vm.registerData, "email", $event.target.value)
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.errors.has('email')),
+      expression: "errors.has('email')"
+    }],
+    staticClass: "form-control-feedback"
+  }, [_vm._v(_vm._s(_vm.errors.first('email')))])]), _vm._v(" "), _c('div', {
+    class: {
+      'form-group': true, 'has-danger': _vm.errors.has('phone'), 'has-success': !_vm.errors.has('phone') && _vm.fields.phone.touched
+    }
+  }, [_c('label', [_vm._v("Numer telefonu")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model.lazy",
+      value: (_vm.registerData.phone),
+      expression: "registerData.phone",
+      modifiers: {
+        "lazy": true
+      }
+    }, {
+      name: "validate",
+      rawName: "v-validate",
+      value: ({
+        required: true,
+        min: 7,
+        max: 15,
+        regex: /^[0-9+() ]{1,}$/
+      }),
+      expression: "{ required: true, min: 7, max: 15, regex: /^[0-9+() ]{1,}$/ }"
+    }],
+    staticClass: "form-control",
+    class: {
+      'form-control-danger': _vm.errors.has('phone'), 'form-control-success': !_vm.errors.has('phone')
+    },
+    attrs: {
+      "name": "phone",
+      "type": "text",
+      "placeholder": "111-222-333"
+    },
+    domProps: {
+      "value": (_vm.registerData.phone)
+    },
+    on: {
+      "change": function($event) {
+        _vm.$set(_vm.registerData, "phone", $event.target.value)
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.errors.has('phone')),
+      expression: "errors.has('phone')"
+    }],
+    staticClass: "form-control-feedback"
+  }, [_vm._v(_vm._s(_vm.errors.first('phone')))])]), _vm._v(" "), _c('div', {
+    class: {
+      'form-group': true, 'has-danger': _vm.errors.has('password_conf'), 'has-success': !_vm.errors.has('password_conf') && _vm.fields.password_conf.touched
+    }
+  }, [_c('label', [_vm._v("Potwtórz hasło")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model.lazy",
+      value: (_vm.registerData.password_conf),
+      expression: "registerData.password_conf",
+      modifiers: {
+        "lazy": true
+      }
+    }, {
+      name: "validate",
+      rawName: "v-validate",
+      value: ('required|confirmed:haslo'),
+      expression: "'required|confirmed:haslo'"
+    }],
+    staticClass: "form-control",
+    class: {
+      'form-control-danger': _vm.errors.has('password_conf'), 'form-control-success': !_vm.errors.has('password_conf')
+    },
+    attrs: {
+      "name": "password_conf",
+      "type": "password"
+    },
+    domProps: {
+      "value": (_vm.registerData.password_conf)
+    },
+    on: {
+      "change": function($event) {
+        _vm.$set(_vm.registerData, "password_conf", $event.target.value)
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.errors.has('password_conf')),
+      expression: "errors.has('password_conf')"
+    }],
+    staticClass: "form-control-feedback"
+  }, [_vm._v(_vm._s(_vm.errors.first('password_conf')))])])])])]) : _vm._e(), _vm._v(" "), (_vm.step === 2) ? _c('section', {
+    staticClass: "form-wraper"
+  }, [_c('h3', [_vm._v("Krok 2")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-lg-6"
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Województwo")]), _vm._v(" "), _c('select', {
-    staticClass: "form-control",
+    staticClass: "form-control ls-select2",
     attrs: {
       "name": "region"
     }
@@ -56998,77 +57306,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "selected": "",
       "disabled": ""
     }
-  }, [_vm._v("Wybierz województwo")]), _vm._v(" "), _vm._l((_vm.regiony), function(rerion) {
-    return _c('option', [_vm._v(_vm._s(_vm.region))])
-  })], 2)]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _vm._m(2)])])])])])
+  }, [_vm._v("Wybierz województwo")]), _vm._v(" "), _vm._l((_vm.regiony), function(region) {
+    return _c('option', [_vm._v(_vm._s(region))])
+  })], 2)]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _vm._m(1)])]) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "buttons-register"
+  }, [(_vm.step !== 1) ? _c('button', {
+    staticClass: "btn btn-primary btn-register",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": _vm.piervousStep
+    }
+  }, [_vm._v("Wstecz")]) : _vm._e(), _vm._v(" "), (_vm.step < 2) ? _c('button', {
+    staticClass: "btn btn-primary btn-register",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": _vm.nextStep
+    }
+  }, [_vm._v("Dalej")]) : _vm._e(), _vm._v(" "), (_vm.step === 2) ? _c('button', {
+    staticClass: "btn btn-primary btn-register"
+  }, [_vm._v("Zarejestruj")]) : _vm._e()])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-lg-6"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Imię")]), _vm._v(" "), _c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "first_name",
-      "tabindex": "1",
-      "placeholder": "Jan"
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Nazwisko")]), _vm._v(" "), _c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "last_name",
-      "tabindex": "2",
-      "placeholder": "Kowalski"
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Hasło")]), _vm._v(" "), _c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "password",
-      "id": "password",
-      "name": "password",
-      "tabindex": "5"
-    }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "col-lg-6"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("E-mail")]), _vm._v(" "), _c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "email",
-      "name": "email",
-      "tabindex": "3",
-      "placeholder": "jankowalski@gmai.com"
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Nr. telefonu")]), _vm._v(" "), _c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "phone_number",
-      "tabindex": "4",
-      "placeholder": "111 222 333"
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Potwierdź hasło")]), _vm._v(" "), _c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "password",
-      "name": "password_confirmation",
-      "tabindex": "6"
-    }
-  })])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Ulica i numer")]), _vm._v(" "), _c('input', {

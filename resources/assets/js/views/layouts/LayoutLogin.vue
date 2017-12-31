@@ -1,6 +1,6 @@
 <template>
     <div class="login-wrapper">
-        <div class="login-box">
+        <div class="login-box register-form">
             <div class="brand-main">
                 <a href="/admin"><img src="/assets/img/logo-large.png" alt="Laraspace Logo"></a>
             </div>
