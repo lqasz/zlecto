@@ -24539,3 +24539,8 @@ label {
   margin-bottom: .2rem;
 }
 
+.form-select {
+  height: 38px;
+  margin-top: 5px;
+}
+
